@@ -1,15 +1,16 @@
+import SidebarLeft from "@/components/sidebar-left";
+import SidebarRight from "@/components/sidebar-right";
+import { clsm } from "@/utils/clsm";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import NextUIProviders from "@/components/next-ui-providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bandingkan Harga Indomaret dan Alfamart",
-  description:
-    "Ingin belanja di Indomaret atau alfamart? Dan ingin membandingkan harga diantara Indomaret dan Alfamart? Mari kesini dan belanaj dengan lebih hemat",
+  title: "My Anime List",
+  description: "See all anime list",
 };
 
 export default function RootLayout({
@@ -18,11 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+    <html lang="en" className="dark">
+      <body className={clsm(inter.className, "bg-slate-950 text-white")}>
+        <NextUIProviders>
+          <div className="grid grid-cols-12">
+            <SidebarLeft />
+            <main className="min-h-screen  p-8 bg-slate-950 col-span-8">
+              {children}
+            </main>
+            <SidebarRight />
+          </div>
+        </NextUIProviders>
       </body>
     </html>
   );
