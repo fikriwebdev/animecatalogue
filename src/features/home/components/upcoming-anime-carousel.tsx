@@ -63,7 +63,10 @@ export default function UpcomingAnimeCarousel({
         {anime.anime.map((item) => (
           <SwiperSlide key={item.href} className="relative">
             <Link href={item.href}>
-              <Card className="w-full h-[350px]" isFooterBlurred>
+              <Card
+                className="w-full h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
+                isFooterBlurred
+              >
                 <Image
                   src={item.image}
                   className="object-cover object-top w-full h-full z-0"

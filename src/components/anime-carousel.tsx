@@ -62,7 +62,7 @@ export default function AnimeCarousel({
           <SwiperSlide
             key={item.title}
             className={clsm(
-              "relative overflow-visible group ",
+              "relative overflow-visible",
               withRanking ? "pl-8" : ""
             )}
           >
@@ -81,10 +81,13 @@ export default function AnimeCarousel({
                   {item.rank}
                 </p>
               ) : null}
-              <Card className="w-full h-[350px]" isFooterBlurred>
+              <Card
+                className="w-full h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
+                isFooterBlurred
+              >
                 <Image
                   src={item.image}
-                  className="object-cover object-top w-full h-full z-0 transform scale-100 group-hover:scale-105 transition-all duration-1000 "
+                  className="object-cover object-top w-full h-full z-0"
                   alt={item.title}
                   removeWrapper
                 />
