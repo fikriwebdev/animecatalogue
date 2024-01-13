@@ -18,11 +18,13 @@ export type Result = {
 
 type ListType = "bypopularity" | "airing" | "favorite";
 
-export async function getTopAnime(type?: ListType): Promise<Result> {
+export async function getTopAnime(type?: ListType, page = 1): Promise<Result> {
   const listType = type ? `?type=${type}` : "";
 
+  const limit = page > 1 ? `&limit=${page * 50}` : "";
+
   const topAnimeResponse = await fetch(
-    `https://myanimelist.net/topanime.php${listType}`
+    `https://myanimelist.net/topanime.php${listType}${limit}`
   );
   const topAnimeDataText = await topAnimeResponse.text();
 

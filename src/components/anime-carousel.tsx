@@ -1,19 +1,19 @@
 "use client";
 
 import { type Result } from "@/libs/get-top-anime";
-import { Button, Card, CardFooter, Image } from "@nextui-org/react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Button } from "@nextui-org/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { clsm } from "@/utils/clsm";
-import { Gasoek_One } from "next/font/google";
-import { A11y, Navigation } from "swiper/modules";
 import React from "react";
-import Link from "next/link";
+import { A11y, Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import AnimeCard from "./anime-card";
+import { Gasoek_One } from "next/font/google";
 
 const GasoekOne = Gasoek_One({ subsets: ["latin"], weight: ["400"] });
 
@@ -70,52 +70,21 @@ export default function AnimeCarousel({
               withRanking ? "pl-8" : ""
             )}
           >
-            <Link href={item.href}>
-              {withRanking ? (
-                <p
-                  className={clsm(
-                    "absolute text-8xl left-0 top-1/2 z-10 stroke-1 shadow-inner text-gray-50 select-none -translate-y-1/2",
-                    GasoekOne.className
-                  )}
-                  style={{
-                    textShadow:
-                      "-1px -1px 0 #475569, 1px -1px 0 #475569, -1px 1px 0 #475569, 1px 1px 0 #475569",
-                  }}
-                >
-                  {item.rank}
-                </p>
-              ) : null}
-              <Card
-                className="w-full h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
-                isFooterBlurred
+            {withRanking ? (
+              <p
+                className={clsm(
+                  "absolute text-8xl left-0 top-1/2 z-10 stroke-1 shadow-inner text-gray-50 select-none -translate-y-1/2",
+                  GasoekOne.className
+                )}
+                style={{
+                  textShadow:
+                    "-1px -1px 0 #475569, 1px -1px 0 #475569, -1px 1px 0 #475569, 1px 1px 0 #475569",
+                }}
               >
-                <Image
-                  src={item.image}
-                  className="object-cover object-top w-full h-full z-0"
-                  alt={item.title}
-                  removeWrapper
-                />
-
-                <CardFooter className="absolute bg-slate-900/50 bottom-0 border-t-1 border-slate-100/20 z-10 justify-between h-16 w-full">
-                  <div className="flex items-center gap-4 justify-between w-full">
-                    <div className="flex flex-col gap-1">
-                      <p className="font-semibold text-xs line-clamp-2">
-                        {item.title}
-                      </p>
-                      {item.info ? (
-                        <p className="text-xs">{item.info.eps}</p>
-                      ) : null}
-                    </div>
-                    {item.rating ? (
-                      <div className="flex items-center gap-2">
-                        <Star className="text-yellow-500 fill-yellow-500" />
-                        <p>{item.rating}</p>
-                      </div>
-                    ) : null}
-                  </div>
-                </CardFooter>
-              </Card>
-            </Link>
+                {item.rank}
+              </p>
+            ) : null}
+            <AnimeCard {...item} />
           </SwiperSlide>
         ))}
         <>
