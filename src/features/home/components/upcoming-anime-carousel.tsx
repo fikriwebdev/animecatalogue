@@ -11,7 +11,7 @@ import { A11y, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { type SlideAnimeResult } from "@/libs/getUpcomingAnime";
+import { type SlideAnimeResult } from "@/libs/get-upcoming-anime";
 
 import { Button } from "@nextui-org/button";
 import { Card, CardFooter } from "@nextui-org/card";

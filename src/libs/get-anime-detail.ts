@@ -322,7 +322,7 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
     });
 
   const recommendations: AnimeDetailResult["recommendations"] = $(
-    ".anime-slide-block .anime-slide .btn-anime"
+    "#anime_recommendation .anime-slide .btn-anime"
   )
     .toArray()
     .map((el) => {

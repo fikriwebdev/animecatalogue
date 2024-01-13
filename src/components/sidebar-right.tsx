@@ -1,4 +1,4 @@
-import getLatestUpdatedAnime from "@/libs/getLatestUpdatedAnime";
+import getLatestUpdatedAnime from "@/libs/get-latest-updated-anime";
 import { Input } from "@nextui-org/input";
 import { Button, Card, CardFooter, Chip, Image } from "@nextui-org/react";
 import { Crown, Search } from "lucide-react";

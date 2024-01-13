@@ -1,6 +1,6 @@
 import AnimeCarousel from "@/components/anime-carousel";
-import { getTopAnime } from "@/libs/getTopAnime";
-import { getUpcomingAnime } from "@/libs/getUpcomingAnime";
+import { getTopAnime } from "@/libs/get-top-anime";
+import { getUpcomingAnime } from "@/libs/get-upcoming-anime";
 
 export default async function ViewHome() {
   const upcomingAnime = await getUpcomingAnime();

@@ -1,10 +1,12 @@
-import { AnimeDetailResult } from "@/libs/getAnimeDetail";
+import AnimeCarousel from "@/components/anime-carousel";
+import { AnimeDetailResult } from "@/libs/get-anime-detail";
 import {
   Image,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
+  Chip,
 } from "@nextui-org/react";
 import React from "react";
 
@@ -37,14 +39,29 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
           <div className="flex items-center gap-2 mb-4">
             <p className="text-base ">{season}</p>
             <p>|</p>
-            <p>Rank: {statistics.ranked}</p>
-            <p>Popularity: {statistics.popularity}</p>
-            <p>Favorites: {statistics.favorites}</p>
+            <div>
+              Rank:{" "}
+              <Chip color="default" className="text-white" variant="flat">
+                {statistics.ranked}
+              </Chip>
+            </div>
+            <div>
+              popularity:{" "}
+              <Chip color="success" className="text-white" variant="flat">
+                {statistics.popularity}
+              </Chip>
+            </div>
+            <div>
+              Favorites:{" "}
+              <Chip color="warning" className="text-white" variant="flat">
+                {statistics.favorites}
+              </Chip>
+            </div>
           </div>
           <p className="text-sm font-light">{synopsis}</p>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-8">
         <h1 className="text-3xl font-semibold  mb-6">Characters</h1>
         <div className="mt-4 grid grid-cols-5 gap-4">
           {characters.map((character) => (
@@ -77,7 +94,7 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
           ))}
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-8">
         <h1 className="text-3xl font-semibold  mb-6">Staff</h1>
         <div className="mt-4 grid grid-cols-5 gap-4">
           {staffs.map((staff) => (
@@ -98,26 +115,11 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
           ))}
         </div>
       </div>
-      <div className="mt-4">
-        <h1 className="text-3xl font-semibold  mb-6">Recommendations</h1>
-        <div className="mt-4 grid grid-cols-5 gap-4">
-          {staffs.map((staff) => (
-            <Card key={staff.char_name} className="h-[300px] bg-primary-800">
-              <Image
-                src={staff.char_img}
-                alt={staff.char_name}
-                className="w-full h-[70%] object-cover object-center"
-                removeWrapper
-                radius="none"
-              />
-
-              <CardBody className="mt-4">
-                <p>{staff.char_name}</p>
-                <p className="text-sm text-primary-500">{staff.role}</p>
-              </CardBody>
-            </Card>
-          ))}
-        </div>
+      <div className="mt-8">
+        <AnimeCarousel
+          title="Recommendations"
+          anime={{ animes: recommendations }}
+        />
       </div>
     </div>
   );

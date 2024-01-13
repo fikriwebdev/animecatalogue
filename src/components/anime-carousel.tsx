@@ -1,6 +1,6 @@
 "use client";
 
-import { type Result } from "@/libs/getTopAnime";
+import { type Result } from "@/libs/get-top-anime";
 import { Button, Card, CardFooter, Image } from "@nextui-org/react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";

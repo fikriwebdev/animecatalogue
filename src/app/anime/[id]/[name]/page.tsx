@@ -1,5 +1,5 @@
 import ViewAnimeDetail from "@/features/anime-detail";
-import { getAnimeDetail } from "@/libs/getAnimeDetail";
+import { getAnimeDetail } from "@/libs/get-anime-detail";
 import React from "react";
 
 export default async function AnimeDetailPage({
