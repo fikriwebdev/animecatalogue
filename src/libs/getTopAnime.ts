@@ -1,18 +1,19 @@
+import getHDImage from "@/utils/get-hd-image";
 import * as cheerio from "cheerio";
 
 export type Result = {
   animes: {
-    rank: string;
+    rank?: string;
     title: string;
-    info: {
+    info?: {
       eps: string;
       releaseDate: string;
     };
     image: string;
-    rating: string;
+    rating?: string;
     href: string;
   }[];
-  hasNextPage: boolean;
+  hasNextPage?: boolean;
 };
 
 type ListType = "bypopularity" | "airing" | "favorite";
@@ -54,9 +55,7 @@ export async function getTopAnime(type?: ListType): Promise<Result> {
 
       const imageSrc = image ? image["data-src"] : "";
 
-      const splittedSrc = imageSrc.split("/");
-
-      const hdImage = `https://cdn.myanimelist.net/images/anime/${splittedSrc[7]}/${splittedSrc[8]}`;
+      const hdImage = getHDImage(imageSrc);
 
       return {
         rank,

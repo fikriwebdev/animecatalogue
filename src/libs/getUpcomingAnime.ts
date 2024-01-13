@@ -1,3 +1,4 @@
+import getHDImage from "@/utils/get-hd-image";
 import * as cheerio from "cheerio";
 
 type Anime = {
@@ -29,9 +30,7 @@ export async function getUpcomingAnime(): Promise<SlideAnimeResult> {
 
       const imageSrc = image ? image["data-src"] : "";
 
-      const splittedSrc = imageSrc.split("/");
-
-      const hdImage = `https://cdn.myanimelist.net/images/anime/${splittedSrc[7]}/${splittedSrc[8]}`;
+      const hdImage = getHDImage(imageSrc);
 
       const a = $li("a").attr();
 

@@ -11,6 +11,10 @@ import { A11y, Navigation } from "swiper/modules";
 import React from "react";
 import Link from "next/link";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
 const GasoekOne = Gasoek_One({ subsets: ["latin"], weight: ["400"] });
 
 type AnimeCarouselProps = {
@@ -98,12 +102,16 @@ export default function AnimeCarousel({
                       <p className="font-semibold text-xs line-clamp-2">
                         {item.title}
                       </p>
-                      <p className="text-xs">{item.info.eps}</p>
+                      {item.info ? (
+                        <p className="text-xs">{item.info.eps}</p>
+                      ) : null}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Star className="text-yellow-500 fill-yellow-500" />
-                      <p>{item.rating}</p>
-                    </div>
+                    {item.rating ? (
+                      <div className="flex items-center gap-2">
+                        <Star className="text-yellow-500 fill-yellow-500" />
+                        <p>{item.rating}</p>
+                      </div>
+                    ) : null}
                   </div>
                 </CardFooter>
               </Card>

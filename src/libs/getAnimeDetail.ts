@@ -1,14 +1,25 @@
 import getHDImage from "@/utils/get-hd-image";
 import * as cheerio from "cheerio";
-import { json } from "stream/consumers";
 
-type Characters = {
+type Character = {
   char_img: string;
   char_name: string;
   role: string;
   voice_char_name: string;
   voice_char_country: string;
   voice_char_img: string;
+};
+
+type Staff = {
+  char_img: string;
+  char_name: string;
+  role: string;
+};
+
+type Recommendation = {
+  title: string;
+  image: string;
+  href: string;
 };
 
 export type AnimeDetailResult = {
@@ -43,7 +54,9 @@ export type AnimeDetailResult = {
     popularity: string;
     favorites: string;
   };
-  characters: Characters[];
+  characters: Character[];
+  staffs: Staff[];
+  recommendations: Recommendation[];
 };
 
 export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
@@ -260,7 +273,7 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
         $table(".picSurround>a>img").eq(1).attr()?.["data-src"] || ""
       );
 
-      const character: Characters = {
+      const character: Character = {
         char_img: hdCharImage,
         char_name: $table("td").eq(1).children().eq(0).children().text(),
         role: $table("td").eq(1).children().eq(1).children().text(),
@@ -288,6 +301,50 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
       return character;
     });
 
+  const staffs: AnimeDetailResult["staffs"] = $(
+    ".detail-characters-list:nth-of-type(5) table[width='100%']"
+  )
+    .toArray()
+    .map((el) => {
+      const $table = cheerio.load(el);
+
+      const hdCharImage = getHDImage(
+        $table(".picSurround>a>img").eq(0).attr()?.["data-src"] || ""
+      );
+
+      const staffs: Staff = {
+        char_img: hdCharImage,
+        char_name: $table("td").eq(1).children().eq(0).text(),
+        role: $table("td").eq(1).children().eq(1).children().text(),
+      };
+
+      return staffs;
+    });
+
+  const recommendations: AnimeDetailResult["recommendations"] = $(
+    ".anime-slide-block .anime-slide .btn-anime"
+  )
+    .toArray()
+    .map((el) => {
+      const $anime = cheerio.load(el);
+
+      const title = $anime(".title").text();
+      const image = $anime("img").attr();
+      const imageSrc = image ? image["data-src"] : "";
+
+      const hdImage = getHDImage(imageSrc);
+
+      const a = $anime(".link").attr();
+      const src = a ? a["href"] : "";
+      const href = src.replace("https://myanimelist.net", "");
+
+      return {
+        title,
+        image: hdImage,
+        href,
+      };
+    });
+
   return {
     jp_title,
     en_title,
@@ -301,5 +358,7 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
     information,
     statistics,
     characters,
+    staffs,
+    recommendations,
   };
 }

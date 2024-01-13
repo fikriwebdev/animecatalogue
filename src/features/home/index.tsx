@@ -1,7 +1,6 @@
 import AnimeCarousel from "@/components/anime-carousel";
-import { getUpcomingAnime } from "@/libs/getUpcomingAnime";
 import { getTopAnime } from "@/libs/getTopAnime";
-import UpcomingAnimeCarousel from "./components/upcoming-anime-carousel";
+import { getUpcomingAnime } from "@/libs/getUpcomingAnime";
 
 export default async function ViewHome() {
   const upcomingAnime = await getUpcomingAnime();
@@ -12,7 +11,10 @@ export default async function ViewHome() {
 
   return (
     <div>
-      <UpcomingAnimeCarousel anime={upcomingAnime} />
+      <AnimeCarousel
+        anime={{ animes: upcomingAnime.anime }}
+        title={upcomingAnime.title}
+      />
       <AnimeCarousel anime={topAnime} title="Top Anime" withRanking />
       <AnimeCarousel anime={topAiringAnime} title="Top Airing Anime" />
       <AnimeCarousel anime={mostPopularAnime} title="Most Popular Anime" />

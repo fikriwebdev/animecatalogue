@@ -9,9 +9,18 @@ import {
 import React from "react";
 
 export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
-  const { poster, jp_title, season, synopsis, statistics, characters } = data;
+  const {
+    poster,
+    jp_title,
+    season,
+    synopsis,
+    statistics,
+    characters,
+    staffs,
+    recommendations,
+  } = data;
 
-  console.log(characters);
+  console.log(recommendations);
 
   return (
     <div>
@@ -39,7 +48,10 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
         <h1 className="text-3xl font-semibold  mb-6">Characters</h1>
         <div className="mt-4 grid grid-cols-5 gap-4">
           {characters.map((character) => (
-            <Card key={character.char_name} className="h-[300px]">
+            <Card
+              key={character.char_name}
+              className="h-[300px] bg-primary-800"
+            >
               <div className="grid grid-cols-2 h-1/2">
                 <Image
                   src={character.char_img}
@@ -56,9 +68,53 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
                   radius="none"
                 />
               </div>
-              <CardFooter>
-                <h1>{character.char_name}</h1>
-              </CardFooter>
+              <CardBody className="mt-10">
+                <p>{character.voice_char_name} as</p>
+                <p>{character.char_name}</p>
+                <p className="text-sm text-primary-500">{character.role}</p>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </div>
+      <div className="mt-4">
+        <h1 className="text-3xl font-semibold  mb-6">Staff</h1>
+        <div className="mt-4 grid grid-cols-5 gap-4">
+          {staffs.map((staff) => (
+            <Card key={staff.char_name} className="h-[300px] bg-primary-800">
+              <Image
+                src={staff.char_img}
+                alt={staff.char_name}
+                className="w-full h-[70%] object-cover object-center"
+                removeWrapper
+                radius="none"
+              />
+
+              <CardBody className="mt-4">
+                <p>{staff.char_name}</p>
+                <p className="text-sm text-primary-500">{staff.role}</p>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </div>
+      <div className="mt-4">
+        <h1 className="text-3xl font-semibold  mb-6">Recommendations</h1>
+        <div className="mt-4 grid grid-cols-5 gap-4">
+          {staffs.map((staff) => (
+            <Card key={staff.char_name} className="h-[300px] bg-primary-800">
+              <Image
+                src={staff.char_img}
+                alt={staff.char_name}
+                className="w-full h-[70%] object-cover object-center"
+                removeWrapper
+                radius="none"
+              />
+
+              <CardBody className="mt-4">
+                <p>{staff.char_name}</p>
+                <p className="text-sm text-primary-500">{staff.role}</p>
+              </CardBody>
             </Card>
           ))}
         </div>
