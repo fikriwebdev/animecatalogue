@@ -40,6 +40,7 @@ export async function getUpcomingAnime(): Promise<SlideAnimeResult> {
         title,
         image: hdImage,
         href,
+        imageSrc,
       };
     });
 
