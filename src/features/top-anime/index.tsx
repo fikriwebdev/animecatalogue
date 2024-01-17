@@ -1,7 +1,5 @@
-import AnimeCard from "@/components/anime-card";
-import { getTopAnime } from "@/libs/get-top-anime";
-import PaginationButton from "./components/pagination-button";
 import AnimeGridList from "@/components/anime-grid-list";
+import { getTopAnime } from "@/libs/get-top-anime";
 
 type ViewTopAnimeProps = {
   page: string;
