@@ -81,7 +81,7 @@ export default function AnimeGridList({
         {animes.map((anime) => (
           <div className="relative" key={anime.title}>
             <div className="absolute top-0 left-0 z-[1] rounded-br-lg">
-              <div className="bg-secondary/80  text-white text-3xl font-semibold min-w-10 flex items-center justify-center rounded-br-lg px-4 py-1">
+              <div className="bg-secondary/80  text-white text-3xl font-semibold min-w-10 flex items-center justify-center rounded-br-xl rounded-tl-xl px-4 py-1">
                 {anime.rank}
               </div>
             </div>
