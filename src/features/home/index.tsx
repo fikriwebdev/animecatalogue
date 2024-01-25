@@ -9,8 +9,6 @@ export default async function ViewHome() {
   const mostPopularAnime = await getTopAnime("bypopularity");
   const mostFavoritAnime = await getTopAnime("favorite");
 
-  console.log(upcomingAnime.anime);
-
   return (
     <div>
       <AnimeCarousel

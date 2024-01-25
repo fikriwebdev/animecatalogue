@@ -22,8 +22,6 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
     recommendations,
   } = data;
 
-  console.log(recommendations);
-
   return (
     <div>
       <div className="grid grid-cols-12 gap-4 mb-4">
