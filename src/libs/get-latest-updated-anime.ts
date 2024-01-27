@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 
-type LatestUpdateAnimeResult = {
+export type LatestUpdateAnime = {
   title: string;
   image: string;
   href: string;
@@ -8,7 +8,9 @@ type LatestUpdateAnimeResult = {
     number: string;
     isPremium: boolean;
   };
-}[];
+};
+
+export type LatestUpdateAnimeResult = LatestUpdateAnime[];
 
 export default async function getLatestUpdatedAnime(): Promise<LatestUpdateAnimeResult> {
   const latestUpdateAnimeResponse = await fetch("https://myanimelist.net/");
