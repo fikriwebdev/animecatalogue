@@ -1,5 +1,4 @@
 import getGenres from "@/libs/get-genres";
-import React from "react";
 import GenreCard from "./components/genre-card";
 
 export default async function ViewGenres() {
@@ -7,7 +6,9 @@ export default async function ViewGenres() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">All Anime Genres</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">All Anime Genres</h1>
+      </div>
       <div className="mt-4">
         {genres.map((genre) => (
           <div key={genre.title} className="mb-8">
