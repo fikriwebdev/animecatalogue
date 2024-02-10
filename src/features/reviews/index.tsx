@@ -1,7 +1,6 @@
-import getReviews from "@/libs/get-reviews";
-import React from "react";
-import ReviewCard from "./components/review-card";
 import PaginationButton from "@/components/pagination-button";
+import getReviews from "@/libs/get-reviews";
+import ReviewCard from "./components/review-card";
 
 type ViewReviewsProps = {
   page: string;

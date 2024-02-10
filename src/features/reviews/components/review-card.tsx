@@ -34,7 +34,7 @@ export default function ReviewCard({
           <div>
             <p className="text-primary-100">{user.username}</p>
             <Link href={anime.href} className="group">
-              <p className="text-primary-100 text-sm group-hover:underline">
+              <p className="text-primary-100 text-sm group-hover:underline line-clamp-1">
                 {anime.title}
               </p>
             </Link>
