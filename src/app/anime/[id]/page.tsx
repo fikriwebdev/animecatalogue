@@ -8,5 +8,5 @@ export default async function AnimeDetailPage({
 }) {
   const data = await getAnimeDetail(`${params.id}/${params.name}`);
 
-  return <ViewAnimeDetail data={data} />;
+  return <ViewAnimeDetail data={data} params={params} />;
 }

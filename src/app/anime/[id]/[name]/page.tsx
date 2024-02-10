@@ -1,6 +1,5 @@
 import ViewAnimeDetail from "@/features/anime-detail";
 import { getAnimeDetail } from "@/libs/get-anime-detail";
-import React from "react";
 
 export default async function AnimeDetailPage({
   params,
@@ -9,5 +8,5 @@ export default async function AnimeDetailPage({
 }) {
   const data = await getAnimeDetail(`${params.id}/${params.name}`);
 
-  return <ViewAnimeDetail data={data} />;
+  return <ViewAnimeDetail data={data} params={params} />;
 }
