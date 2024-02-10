@@ -33,14 +33,26 @@ export default function AnimeCarousel({
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold  mb-6">{title}</h1>
+      <h1 className="text-3xl font-semibold  mb-6 px-4 pt-4">{title}</h1>
       <Swiper
         className="mb-8 [&>.swiper-button-disabled]:hidden overflow-visible"
-        slidesPerView={withRanking ? 4.3 : 5}
-        spaceBetween={withRanking ? 16 : 24}
         modules={[Navigation, A11y]}
         loop={false}
         centeredSlides={false}
+        breakpoints={{
+          360: {
+            slidesPerView: 1.8,
+            spaceBetween: 8,
+            slidesOffsetAfter: 16,
+            slidesOffsetBefore: 16,
+          },
+          768: {
+            slidesPerView: withRanking ? 4.3 : 5,
+            spaceBetween: withRanking ? 16 : 24,
+            slidesOffsetAfter: 16,
+            slidesOffsetBefore: 16,
+          },
+        }}
         navigation={{
           nextEl: "next-slide",
           prevEl: "prev-slide",

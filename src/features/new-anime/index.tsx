@@ -7,7 +7,7 @@ export default async function ViewNewAnime() {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold ">New Added Anime</h1>
+      <h1 className="text-3xl font-semibold ">New Anime Added</h1>
       <div className="grid grid-cols-6 gap-4 mt-4">
         {animes.map((anime) => (
           <UpdatedAnimeCard key={anime.href} {...anime} />

@@ -20,7 +20,7 @@ export default function AnimeCard({
   return (
     <Link href={href}>
       <Card
-        className="w-full h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
+        className="w-full h-[300px] md:h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
         isFooterBlurred
       >
         <Image

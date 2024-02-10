@@ -89,7 +89,7 @@ export default function SidebarLeft() {
   const pathname = usePathname();
 
   return (
-    <aside className="col-span-2 border-r-2 border-slate-800 h-screen sticky left-0 top-0">
+    <aside className="hidden md:block col-span-2 border-r-2 border-slate-800 h-screen sticky left-0 top-0">
       <Logo />
       <div className="flex flex-col gap-12 mt-8">
         {menu.map((item) => (

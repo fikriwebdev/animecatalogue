@@ -22,9 +22,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={clsm(inter.className, "bg-slate-950 text-white")}>
         <NextUIProviders>
-          <div className="grid grid-cols-12">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             <SidebarLeft />
-            <main className="min-h-screen  p-8 bg-slate-950 col-span-8">
+            <main className="min-h-screen   bg-slate-950 col-span-8">
               {children}
             </main>
             <SidebarRight />

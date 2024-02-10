@@ -38,7 +38,13 @@ export default async function getLatestUpdatedAnime(): Promise<LatestUpdateAnime
 
       const a = $li("a").attr();
 
-      const href = a ? a["href"].replace("https://myanimelist.net", "") : "";
+      const href = a
+        ? a["href"]
+            .replace("https://myanimelist.net", "")
+            .split("/")
+            .slice(0, -2)
+            .join("/")
+        : "";
 
       return {
         title,
