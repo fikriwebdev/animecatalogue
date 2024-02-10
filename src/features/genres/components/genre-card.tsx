@@ -16,7 +16,7 @@ export default function GenreCard({ label, href }: GenreCardProps) {
     <Link href={href}>
       <div className="w-full h-20 p-4  border border-white/50 rounded-lg flex items-center justify-center text-center text-sm  relative overflow-hidden">
         <div className="absolute w-full h-full inset-0 backdrop-blur-md bg-white/10 z-[2]"></div>
-        <p className="absolute z-[3]">{label}</p>
+        <p className="absolute z-[3] max-w-[90%]">{label}</p>
         <Image
           src={images[0]}
           alt={label}

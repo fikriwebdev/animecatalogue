@@ -13,7 +13,7 @@ export default async function ViewSeasonAnime({ tab }: ViewSeasonAnime) {
   const defaulTab = seasons.filter((season) => season.isDefault)[0];
 
   return (
-    <div>
+    <div className="p-4">
       <SeasonTabs tabs={seasons} />
       <SeasonAnimeGridList tab={tab || defaulTab.href} />
     </div>

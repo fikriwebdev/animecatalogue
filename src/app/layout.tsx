@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NextUIProviders from "@/components/next-ui-providers";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +25,10 @@ export default function RootLayout({
         <NextUIProviders>
           <div className="grid grid-cols-1 md:grid-cols-12">
             <SidebarLeft />
-            <main className="min-h-screen   bg-slate-950 col-span-8">
-              {children}
-            </main>
+            <div className="col-span-8">
+              <Header />
+              <main className="min-h-screen   bg-slate-950 ">{children}</main>
+            </div>
             <SidebarRight />
           </div>
         </NextUIProviders>

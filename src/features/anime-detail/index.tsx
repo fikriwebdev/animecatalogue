@@ -1,14 +1,6 @@
 import AnimeCarousel from "@/components/anime-carousel";
 import { AnimeDetailResult } from "@/libs/get-anime-detail";
-import {
-  Image,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Chip,
-} from "@nextui-org/react";
-import React from "react";
+import { Card, CardBody, Chip, Image } from "@nextui-org/react";
 
 export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
   const {

@@ -20,7 +20,13 @@ export default function SeasonTabs({ tabs }: SeasonTabsProps) {
       aria-label="Dynamic tabs"
       items={tabs}
       color="default"
-      variant="bordered"
+      variant="light"
+      classNames={{
+        // tabList:
+        //   "overflow-x-scroll w-[90vw] md:w-fit scrollbar-default md:scrollbar-hide py-4 md:py-0",
+        tabList: "flex-wrap",
+        tab: "w-fit",
+      }}
       defaultSelectedKey={tabs[1].href}
       onSelectionChange={(key) =>
         router.push(`${pathname}?tab=${encodeURIComponent(key)}`)

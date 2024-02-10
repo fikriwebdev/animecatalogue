@@ -11,7 +11,7 @@ export default async function ViewReviews({ page }: ViewReviewsProps) {
   const data = await getReviews(+page);
 
   return (
-    <>
+    <div className="p-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold mb-4">Reviews</h1>
         <PaginationButton hasNextPage />
@@ -21,6 +21,6 @@ export default async function ViewReviews({ page }: ViewReviewsProps) {
           <ReviewCard key={index} {...review} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

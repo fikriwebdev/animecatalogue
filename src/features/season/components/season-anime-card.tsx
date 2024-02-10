@@ -18,7 +18,7 @@ export default function SeasonAnimeCard({
 }: AnimeSeason) {
   return (
     <Link href={href}>
-      <div className="w-full h-[500px] bg-primary rounded-lg overflow-hidden relative group">
+      <div className="w-full h-[300px] md:h-[500px] bg-primary rounded-lg overflow-hidden relative group">
         <Image
           src={image}
           className="w-full h-full object-cover object-center rounded-none z-[1] group-hover:scale-110 !transition-transform duration-500"
@@ -28,9 +28,13 @@ export default function SeasonAnimeCard({
         <div className="absolute w-full h-full bg-gradient-to-b from-transparent  to-black/100 bottom-0 z-[2] p-2"></div>
         <div className="absolute bottom-4 p-2 w-full z-[3]">
           <div className="mb-auto">
-            <h1 className="text-lg font-semibold">{title}</h1>
-            <p className="line-clamp-3 mt-2 text-sm font-light">{synopsis}</p>
-            <div className="flex items-center gap-2 text-sm font-light mt-2">
+            <h1 className="text-base md:text-lg line-clamp-1 md:line-clamp-none font-semibold">
+              {title}
+            </h1>
+            <p className="hidden md:block line-clamp-2 md:line-clamp-3 mt-2 text-sm font-light">
+              {synopsis}
+            </p>
+            <div className="flex-col md:flex-row items-center gap-2 text-sm font-light mt-2">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 <p>{date}</p>
@@ -44,7 +48,7 @@ export default function SeasonAnimeCard({
                 <p>{episode}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-wrap mt-4">
+            <div className="flex items-center gap-2 flex-nowrap overflow-x-scroll md:overflow-hidden scrollbar-hide  md:flex-wrap mt-4">
               {genre.map((item) => (
                 <Chip size="sm" key={item} variant="faded">
                   {item}
