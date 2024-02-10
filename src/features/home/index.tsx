@@ -1,5 +1,4 @@
 import AnimeCarousel from "@/components/anime-carousel";
-import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
 import { getTopAnime } from "@/libs/get-top-anime";
 import { getUpcomingAnime } from "@/libs/get-upcoming-anime";
 
