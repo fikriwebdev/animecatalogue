@@ -1,4 +1,5 @@
 import { Card, Skeleton } from "@nextui-org/react";
+import { Image as ImageIcon } from "lucide-react";
 import React from "react";
 
 function AnimeCardSkeleton() {
@@ -7,7 +8,12 @@ function AnimeCardSkeleton() {
       className="basis-[80%] shrink-0 md:w-full space-y-5 p-4 bg-primary-800 h-[300px]"
       radius="lg"
     >
-      <Skeleton className="rounded-lg w-full h-24 !bg-primary-900/50"></Skeleton>
+      <div className="relative h-24">
+        <Skeleton className="rounded-lg w-full h-full !bg-primary-900/50"></Skeleton>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <ImageIcon className="text-primary-500 w-8 h-8" />
+        </div>
+      </div>
       <div className="space-y-3">
         <Skeleton className="w-3/5 rounded-lg h-3 !bg-primary-900/50"></Skeleton>
         <Skeleton className="w-4/5 rounded-lg h-3 !bg-primary-900/50"></Skeleton>
