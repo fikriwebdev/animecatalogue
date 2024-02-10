@@ -341,7 +341,7 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
       return {
         title,
         image: hdImage,
-        href,
+        href: href.replace("/recommendations", ""),
       };
     });
 

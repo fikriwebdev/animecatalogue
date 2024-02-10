@@ -111,7 +111,9 @@ export default function ViewAnimeDetail({ data }: { data: AnimeDetailResult }) {
       <div className="mt-8">
         <AnimeCarousel
           title="Recommendations"
-          anime={{ animes: recommendations }}
+          anime={{
+            animes: recommendations,
+          }}
         />
       </div>
     </div>
