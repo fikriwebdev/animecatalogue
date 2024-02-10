@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import { Menu } from "lucide-react";
 import ListMenu from "./list-menu";
+import Link from "next/link";
 
 function Drawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -74,9 +75,11 @@ export default function Header() {
   return (
     <header className="w-full h-16 border-b  border-slate-800/50 block md:hidden sticky top-0 left-0 right-0 z-[20] bg-slate-950 backdrop-blur-sm">
       <div className="w-full h-full flex items-center justify-between container mx-auto px-4">
-        <h1 className="text-xl font-semibold uppercase bg-gradient-to-r from-blue-500 to-red-500 text-transparent bg-clip-text">
-          MAR
-        </h1>
+        <Link href="/">
+          <h1 className="text-xl font-semibold uppercase bg-gradient-to-r from-blue-500 to-red-500 text-transparent bg-clip-text">
+            MAR
+          </h1>
+        </Link>
         <Drawer />
       </div>
     </header>
