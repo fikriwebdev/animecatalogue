@@ -8,12 +8,14 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
+  Input,
 } from "@nextui-org/react";
-import { Menu } from "lucide-react";
-import ListMenu from "./list-menu";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
+import ListMenu from "../list-menu";
+import { SearchDrawer } from "./search-drawer";
 
-function Drawer() {
+function MenuDrawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
@@ -74,13 +76,14 @@ function Drawer() {
 export default function Header() {
   return (
     <header className="w-full h-16 border-b  border-slate-800/50 block md:hidden sticky top-0 left-0 right-0 z-[20] bg-slate-950 backdrop-blur-sm">
-      <div className="w-full h-full flex items-center justify-between container mx-auto px-4">
+      <div className="w-full h-full flex items-center gap-4 container mx-auto px-4">
         <Link href="/">
           <h1 className="text-xl font-semibold uppercase bg-gradient-to-r from-blue-500 to-red-500 text-transparent bg-clip-text">
             MAR
           </h1>
         </Link>
-        <Drawer />
+        <SearchDrawer />
+        <MenuDrawer />
       </div>
     </header>
   );

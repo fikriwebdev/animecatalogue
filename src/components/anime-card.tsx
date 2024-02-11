@@ -2,11 +2,11 @@ import { Result } from "@/libs/get-top-anime";
 import { clsm } from "@/utils/clsm";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import { Star } from "lucide-react";
-import { Gasoek_One } from "next/font/google";
 import Link from "next/link";
-import React from "react";
 
-type AnimeCardProps = Result["animes"][0];
+type AnimeCardProps = Result["animes"][0] & {
+  containerClassname?: string;
+};
 
 export default function AnimeCard({
   image,
@@ -14,13 +14,15 @@ export default function AnimeCard({
   info,
   rating,
   href,
-
-  rank,
+  containerClassname,
 }: AnimeCardProps) {
   return (
     <Link href={href}>
       <Card
-        className="w-full h-[300px] md:h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
+        className={clsm(
+          "w-full h-[300px] md:h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500",
+          containerClassname
+        )}
         isFooterBlurred
       >
         <Image

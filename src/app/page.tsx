@@ -1,5 +1,5 @@
 import ViewHome from "@/features/home";
 
-export default async function Home() {
+export default function Home() {
   return <ViewHome />;
 }
