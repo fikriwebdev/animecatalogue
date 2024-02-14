@@ -89,6 +89,7 @@ export default function ViewSearch() {
       <h1 className="text-2xl md:text-3xl font-semibold mb-4">Search Anime</h1>
       <Input
         classNames={{
+          input: "text-base",
           inputWrapper:
             "bg-primary-800 group-data-[hover=true]:bg-primary-700 group-data-[focus=true]:bg-primary-700",
         }}
