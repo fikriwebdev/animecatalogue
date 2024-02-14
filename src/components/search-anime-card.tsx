@@ -21,7 +21,7 @@ export default function SearchAnimeCard({
           alt={title}
           removeWrapper
         />
-        <p className="line-clamp-2 text-xs m-4">{title}</p>
+        <p className="line-clamp-2 text-xs p-2">{title}</p>
         <CardFooter className="absolute bottom-0">
           <div className="flex flex-col gap-1 text-xs">
             <div className="flex items-center justify-between w-full">

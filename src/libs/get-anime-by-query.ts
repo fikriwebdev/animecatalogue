@@ -11,14 +11,17 @@ export type AnimeQueryResult = {
   type: string;
 };
 
-export type AnimeByQueryResult = AnimeQueryResult[];
+export type AnimeByQueryResult = {
+  anime: AnimeQueryResult[];
+  totalPage: number;
+};
 
 export default async function getAnimeByQuery(
   query: string,
   limit: string,
   page: string
 ): Promise<AnimeByQueryResult> {
-  const show = (Math.min(1, +page) - 1) * 50;
+  const show = (Math.max(1, +page) - 1) * 50;
 
   const response = await fetch(
     `https://myanimelist.net/anime.php?q=${query}&cat=anime&show=${show}`
@@ -27,7 +30,14 @@ export default async function getAnimeByQuery(
 
   const $ = cheerio.load(resultText);
 
-  const anime: AnimeByQueryResult = $("table:nth-child(1) tr")
+  const totalPage = $(".normal_header")
+    .eq(1)
+    .find("span")
+    .find("a")
+    .last()
+    .text();
+
+  const anime: AnimeByQueryResult["anime"] = $("table:nth-child(1) tr")
     .toArray()
     .slice(1)
     .map((tr) => {
@@ -46,5 +56,8 @@ export default async function getAnimeByQuery(
       return { title, img, eps, rating, href, type };
     });
 
-  return anime.slice(0, +limit);
+  return {
+    anime: anime.slice(0, +limit),
+    totalPage: +totalPage,
+  };
 }

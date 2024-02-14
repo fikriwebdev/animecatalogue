@@ -1,6 +1,5 @@
 "use client";
 
-import useDebounce from "@/hooks/use-debounce";
 import {
   Button,
   Input,
@@ -14,10 +13,11 @@ import {
 import { Search } from "lucide-react";
 import React from "react";
 import { SearchResult } from "../sidebar-right/search-anime";
+import { useDebounce } from "use-debounce";
 
 function Result() {
   const [search, setSearch] = React.useState("");
-  const debouncedSearch = useDebounce(search, 500);
+  const [debouncedSearch] = useDebounce(search, 500);
   return (
     <div className="flex flex-col gap-4 ">
       <Input

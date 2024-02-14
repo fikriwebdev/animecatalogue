@@ -1,6 +1,5 @@
 "use client";
 
-import useDebounce from "@/hooks/use-debounce";
 import { type AnimeByQueryResult } from "@/libs/get-anime-by-query";
 import { Button, Input } from "@nextui-org/react";
 import { Search } from "lucide-react";
@@ -9,6 +8,7 @@ import useSWR from "swr";
 import SearchAnimeCard from "../search-anime-card";
 import Link from "next/link";
 import SearchAnimeCardSkeleton from "../search-anime-card-skeleton";
+import { useDebounce } from "use-debounce";
 
 type SearchResultProps = {
   search: string;
@@ -32,7 +32,7 @@ export function SearchResult({ search }: SearchResultProps) {
         <SearchAnimeCardSkeleton />
       </div>
     );
-  if (!data.length) return <p>No result for query {search}</p>;
+  if (!data.anime.length) return <p>No result for query {search}</p>;
 
   return (
     <div className="px-4 mt-4">
@@ -40,7 +40,7 @@ export function SearchResult({ search }: SearchResultProps) {
         Result for <span className="italic">{search}</span>
       </p>
       <div className="grid grid-cols-2 gap-4 mt-4">
-        {data.map((anime) => (
+        {data.anime.map((anime) => (
           <SearchAnimeCard key={anime.href} {...anime} />
         ))}
       </div>
@@ -61,7 +61,7 @@ export function SearchResult({ search }: SearchResultProps) {
 
 export default function SearchAnime({ children }: PropsWithChildren) {
   const [search, setSearch] = React.useState("");
-  const debouncedSearch = useDebounce(search, 500);
+  const [debouncedSearch] = useDebounce(search, 500);
 
   return (
     <aside className="hidden md:block col-span-2 border-l border-2 border-slate-800  h-screen overflow-y-auto sticky right-0 top-0">
