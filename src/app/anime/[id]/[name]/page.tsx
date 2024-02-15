@@ -15,7 +15,7 @@ export async function generateMetadata({
     openGraph: {
       title: anime.jp_title,
       description: anime.synopsis,
-      url: `https://ivsa-green.vercel.app/anime/${params.id}/${params.name}`,
+      url: `https://animecatalogue.vercel.app/anime/${params.id}/${params.name}`,
       siteName: "Anime Catalogue",
       images: [
         {
