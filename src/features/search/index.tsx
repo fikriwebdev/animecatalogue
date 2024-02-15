@@ -2,6 +2,7 @@
 
 import SearchAnimeCard from "@/components/search-anime-card";
 import SearchAnimeCardSkeleton from "@/components/search-anime-card-skeleton";
+import useCreateQueryString from "@/hooks/use-create-query-string";
 import { type AnimeByQueryResult } from "@/libs/get-anime-by-query";
 import { Chip, Input, Pagination } from "@nextui-org/react";
 import { Search } from "lucide-react";
@@ -19,6 +20,8 @@ function SearchResult({ search }: SearchResultProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page") || "1";
+
+  const createQueryString = useCreateQueryString();
 
   const { data, error } = useSWR<AnimeByQueryResult>(
     `/api/search?query=${search}&page=${page}`,
@@ -58,7 +61,12 @@ function SearchResult({ search }: SearchResultProps) {
           page={+page}
           onChange={(page) => {
             router.push(
-              pathname + "?q=" + searchParams.get("q") + "&page=" + page
+              pathname +
+                "?" +
+                createQueryString({
+                  page: page.toString(),
+                  q: search,
+                })
             );
           }}
           classNames={{
@@ -79,9 +87,14 @@ export default function ViewSearch() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
 
-  const [search, setSearch] = React.useState(query || "");
+  const createQueryString = useCreateQueryString();
+
+  const [search, setSearch] = React.useState(() => {
+    return query || "";
+  });
+
   const debouncedSearch = useDebouncedCallback((value) => {
-    router.push(pathname + "?q=" + value);
+    router.push(pathname + "?" + createQueryString({ q: value }));
   }, 500);
 
   return (
@@ -106,13 +119,46 @@ export default function ViewSearch() {
       <div className="flex items-center gap-2 mt-4">
         <p className="text-sm">Popular anime:</p>
         <div className="flex items-center gap-2 ">
-          <Chip size="sm" color="default" variant="flat">
+          <Chip
+            size="sm"
+            color="default"
+            variant="flat"
+            as="button"
+            onClick={() => {
+              // router.push(pathname + "?" + createQueryString({ q: "naruto" }));
+              // setSearch('naruto')
+              setSearch("naruto");
+              debouncedSearch("naruto");
+            }}
+          >
             Naruto
           </Chip>
-          <Chip size="sm" color="default" variant="flat">
+          <Chip
+            size="sm"
+            color="default"
+            variant="flat"
+            as="button"
+            onClick={() => {
+              // router.push(pathname + "?" + createQueryString({ q: "bleach" }));
+              setSearch("bleach");
+              debouncedSearch("bleach");
+            }}
+          >
             Bleach
           </Chip>
-          <Chip size="sm" color="default" variant="flat">
+          <Chip
+            size="sm"
+            color="default"
+            variant="flat"
+            as="button"
+            onClick={() => {
+              // router.push(
+              //   pathname + "?" + createQueryString({ q: "attack on titan" })
+              // );
+              setSearch("attack on titan");
+              debouncedSearch("attack on titan");
+            }}
+          >
             Attack on titan
           </Chip>
         </div>
