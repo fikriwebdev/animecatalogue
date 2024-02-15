@@ -328,6 +328,8 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
     .map((el) => {
       const $anime = cheerio.load(el);
 
+      const id = path.split("/")[0];
+
       const title = $anime(".title").text();
       const image = $anime("img").attr();
       const imageSrc = image ? image["data-src"] : "";
@@ -341,7 +343,10 @@ export async function getAnimeDetail(path: string): Promise<AnimeDetailResult> {
       return {
         title,
         image: hdImage,
-        href: href.replace("/recommendations", ""),
+        href: href
+          .replace("/recommendations", "")
+          .replace(id, "")
+          .replace("-", ""),
       };
     });
 

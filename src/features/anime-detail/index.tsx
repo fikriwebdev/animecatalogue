@@ -1,8 +1,6 @@
 import AnimeCarousel from "@/components/anime-carousel";
-import AnimeDetailSkeleton from "@/components/anime-detail-skeleton";
 import { AnimeDetailResult } from "@/libs/get-anime-detail";
 import { Card, CardBody, Chip, Image } from "@nextui-org/react";
-import { Suspense } from "react";
 
 type ViewAnimeDetailProps = {
   data: AnimeDetailResult;

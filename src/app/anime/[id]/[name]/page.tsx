@@ -1,5 +1,34 @@
 import ViewAnimeDetail from "@/features/anime-detail";
 import { getAnimeDetail } from "@/libs/get-anime-detail";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string; name: string };
+}): Promise<Metadata> {
+  const anime = await getAnimeDetail(`${params.id}/${params.name}`);
+
+  return {
+    title: `${anime.jp_title}`,
+    description: anime.synopsis,
+    openGraph: {
+      title: anime.jp_title,
+      description: anime.synopsis,
+      url: `animecatalogue.vercel.app/anime/${params.id}/${params.name}`,
+      siteName: "Anime Catalogue",
+      images: [
+        {
+          url: anime.poster,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+  };
+}
 
 export default async function AnimeDetailPage({
   params,

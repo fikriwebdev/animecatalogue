@@ -14,5 +14,5 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-  return await generateOgImage("Most Favorited Anime", size);
+  return await generateOgImage("Anime Reviews", size);
 }
