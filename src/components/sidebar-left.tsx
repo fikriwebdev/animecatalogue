@@ -12,6 +12,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import ListMenu from "./list-menu";
+import Image from "next/image";
 
 const menu = [
   {
@@ -78,9 +79,21 @@ const menu = [
 
 const Logo = () => {
   return (
-    <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-orange-500 bg-clip-text text-transparent p-4">
-      MyAnimeRank
-    </h1>
+    <div className="flex items-center gap-2 p-4">
+      <Image
+        src="/assets/images/logo.png"
+        width={48}
+        height={48}
+        alt="Anime Catalogue"
+        style={{
+          borderRadius: 999,
+          overflow: "hidden",
+        }}
+      />
+      <h1 className="text-lg font-bold bg-gradient-to-r from-purple-500 to-orange-500 bg-clip-text text-transparent leading-5">
+        Anime <br /> Catalogue
+      </h1>
+    </div>
   );
 };
 

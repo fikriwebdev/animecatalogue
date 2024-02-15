@@ -14,6 +14,7 @@ import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import ListMenu from "../list-menu";
 import { SearchDrawer } from "./search-drawer";
+import Image from "next/image";
 
 function MenuDrawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -78,9 +79,16 @@ export default function Header() {
     <header className="w-full h-16 border-b  border-slate-800/50 block md:hidden sticky top-0 left-0 right-0 z-[20] bg-slate-950 backdrop-blur-sm">
       <div className="w-full h-full flex items-center gap-4 container mx-auto px-4">
         <Link href="/">
-          <h1 className="text-xl font-semibold uppercase bg-gradient-to-r from-blue-500 to-red-500 text-transparent bg-clip-text">
-            MAR
-          </h1>
+          <Image
+            src="/assets/images/logo.png"
+            width={64}
+            height={64}
+            alt="Anime Catalogue"
+            style={{
+              borderRadius: 999,
+              overflow: "hidden",
+            }}
+          />
         </Link>
         <SearchDrawer />
         <MenuDrawer />
