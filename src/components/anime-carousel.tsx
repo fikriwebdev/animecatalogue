@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import AnimeCard from "./anime-card";
 import { Gasoek_One } from "next/font/google";
+import AnimeSkeletonGridList from "./anime-skeleton-grid-list";
 
 const GasoekOne = Gasoek_One({ subsets: ["latin"], weight: ["400"] });
 
@@ -31,14 +32,27 @@ export default function AnimeCarousel({
   const navPrevRef = React.useRef<HTMLButtonElement>(null);
   const navNextRef = React.useRef<HTMLButtonElement>(null);
 
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return <AnimeSkeletonGridList />;
+
   return (
     <div>
       <h1 className="text-3xl font-semibold  mb-6 px-4 pt-4">{title}</h1>
       <Swiper
-        className="mb-8 [&>.swiper-button-disabled]:hidden overflow-visible"
+        className={clsm(
+          "mb-8 [&>.swiper-button-disabled]:hidden overflow-visible"
+          // isMounted ? "visible" : "invisible"
+        )}
         modules={[Navigation, A11y]}
         loop={false}
         centeredSlides={false}
+        initialSlide={0}
+        observer
         breakpoints={{
           360: {
             slidesPerView: 1.8,
