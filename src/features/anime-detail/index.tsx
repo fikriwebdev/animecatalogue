@@ -40,7 +40,7 @@ export default function ViewAnimeDetail({
           <h1 className="text-3xl md:text-4xl font-semibold mb-4">
             {jp_title}
           </h1>
-          <div className="flex items-center gap-2 mb-4 text-sm md:text-base">
+          <div className="flex items-center gap-2 mb-4 text-sm md:text-base flex-wrap">
             <p>{season}</p>
 
             <div>
