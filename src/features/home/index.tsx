@@ -1,5 +1,5 @@
 import AnimeCarousel from "@/components/anime-carousel";
-import { AnimeSkeletonGrid } from "@/components/anime-skeleton-grid-list";
+import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
 import { getTopAnime } from "@/libs/get-top-anime";
 import { getUpcomingAnime } from "@/libs/get-upcoming-anime";
 import { Suspense } from "react";
@@ -67,19 +67,19 @@ async function FavoriteAnime() {
 export default function ViewHome() {
   return (
     <>
-      <Suspense fallback={<AnimeSkeletonGrid />}>
+      <Suspense fallback={<AnimeSkeletonGridList />}>
         <UpcomingAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGrid />}>
+      <Suspense fallback={<AnimeSkeletonGridList />}>
         <TopAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGrid />}>
+      <Suspense fallback={<AnimeSkeletonGridList />}>
         <TopAiringAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGrid />}>
+      <Suspense fallback={<AnimeSkeletonGridList />}>
         <PopularAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGrid />}>
+      <Suspense fallback={<AnimeSkeletonGridList />}>
         <FavoriteAnime />
       </Suspense>
     </>
