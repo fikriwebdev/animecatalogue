@@ -3,11 +3,19 @@ import { getTopAnime } from "@/libs/get-top-anime";
 import { getUpcomingAnime } from "@/libs/get-upcoming-anime";
 
 export default async function ViewHome() {
-  const upcomingAnime = await getUpcomingAnime();
-  const topAnime = await getTopAnime();
-  const topAiringAnime = await getTopAnime("airing");
-  const mostPopularAnime = await getTopAnime("bypopularity");
-  const mostFavoritAnime = await getTopAnime("favorite");
+  const [
+    upcomingAnime,
+    topAnime,
+    topAiringAnime,
+    mostPopularAnime,
+    mostFavoritAnime,
+  ] = await Promise.all([
+    getUpcomingAnime(),
+    getTopAnime(),
+    getTopAnime("airing"),
+    getTopAnime("bypopularity"),
+    getTopAnime("favorite"),
+  ]);
 
   return (
     <>
