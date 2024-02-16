@@ -1,5 +1,6 @@
 import ViewSearch from "@/features/search";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: `Anime Search`,
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function Search() {
-  return <ViewSearch />;
+  return (
+    <Suspense fallback={null}>
+      <ViewSearch />
+    </Suspense>
+  );
 }
