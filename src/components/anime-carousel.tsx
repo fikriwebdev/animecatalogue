@@ -2,7 +2,7 @@
 
 import { type Result } from "@/libs/get-top-anime";
 import { Button } from "@nextui-org/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { clsm } from "@/utils/clsm";
@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 import AnimeCard from "./anime-card";
 import { Gasoek_One } from "next/font/google";
 import AnimeSkeletonGridList from "./anime-skeleton-grid-list";
+import Link from "next/link";
 
 const GasoekOne = Gasoek_One({ subsets: ["latin"], weight: ["400"] });
 
@@ -22,12 +23,14 @@ type AnimeCarouselProps = {
   anime: Result;
   title: string;
   withRanking?: boolean;
+  viewAllHref?: string;
 };
 
 export default function AnimeCarousel({
   anime,
   title,
   withRanking,
+  viewAllHref,
 }: AnimeCarouselProps) {
   const navPrevRef = React.useRef<HTMLButtonElement>(null);
   const navNextRef = React.useRef<HTMLButtonElement>(null);
@@ -42,7 +45,17 @@ export default function AnimeCarousel({
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold  mb-6 px-4 pt-4">{title}</h1>
+      <div className="flex items-center justify-between px-4 pt-4  mb-6  ">
+        <h1 className="text-2xl md:text-3xl font-semibold ">{title}</h1>
+        {viewAllHref ? (
+          <Link
+            href={viewAllHref}
+            className="flex items-center gap-2 transition-colors hover:text-primary-500"
+          >
+            View all <ArrowRight className="w-4 h-4" />
+          </Link>
+        ) : null}
+      </div>
       <Swiper
         className={clsm(
           "mb-8 [&>.swiper-button-disabled]:hidden overflow-visible"

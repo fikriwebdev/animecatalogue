@@ -17,10 +17,27 @@ export default async function ViewHome() {
         anime={{ animes: upcomingAnime.anime }}
         title={upcomingAnime.title}
       />
-      <AnimeCarousel anime={topAnime} title="Top Anime" withRanking />
-      <AnimeCarousel anime={topAiringAnime} title="Top Airing Anime" />
-      <AnimeCarousel anime={mostPopularAnime} title="Most Popular Anime" />
-      <AnimeCarousel anime={mostFavoritAnime} title="Most Favorite Anime" />
+      <AnimeCarousel
+        anime={topAnime}
+        title="Top Anime"
+        withRanking
+        viewAllHref="/top-anime"
+      />
+      <AnimeCarousel
+        anime={topAiringAnime}
+        title="Top Airing Anime"
+        viewAllHref="/top-airing"
+      />
+      <AnimeCarousel
+        anime={mostPopularAnime}
+        title="Most Popular Anime"
+        viewAllHref="/popular"
+      />
+      <AnimeCarousel
+        anime={mostFavoritAnime}
+        title="Most Favorite Anime"
+        viewAllHref="/favorite"
+      />
     </Suspense>
   );
 }
