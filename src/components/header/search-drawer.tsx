@@ -19,22 +19,24 @@ function Result() {
   const [search, setSearch] = React.useState("");
   const [debouncedSearch] = useDebounce(search, 500);
   return (
-    <div className="flex flex-col gap-4 ">
-      <Input
-        classNames={{
-          inputWrapper:
-            "bg-primary-800 group-data-[hover=true]:bg-primary-700 group-data-[focus=true]:bg-primary-700 w-[80%] text-lg sticky placeholder:text-3xl",
-          input: "text-base",
-        }}
-        startContent={<Search />}
-        placeholder="Type to search"
-        radius="full"
-        autoFocus
-        size="sm"
-        type="text"
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-      />
+    <div className="flex flex-col gap-4">
+      <div className="w-full px-4">
+        <Input
+          classNames={{
+            inputWrapper:
+              "bg-primary-800 group-data-[hover=true]:bg-primary-700 group-data-[focus=true]:bg-primary-700 w-full text-lg sticky placeholder:text-3xl ",
+            input: "text-base",
+          }}
+          startContent={<Search />}
+          placeholder="Type to search"
+          radius="full"
+          autoFocus
+          size="sm"
+          type="text"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+      </div>
       {debouncedSearch ? <SearchResult search={debouncedSearch} /> : null}
     </div>
   );
@@ -59,8 +61,8 @@ export function SearchDrawer() {
         scrollBehavior="inside"
         size="full"
         classNames={{
-          wrapper: "w-[100dvw] mx-0",
-          base: "h-[90dvh] mx-0 mb-0 bg-primary-900 rounded-t-lg rounded-b-none",
+          wrapper: "w-full mx-0",
+          base: "h-[95dvh] mx-0 mb-0 bg-primary-900 !rounded-t-xl rounded-b-none",
           body: "p-2",
         }}
       >
