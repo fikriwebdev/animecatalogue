@@ -1,26 +1,26 @@
 "use client";
 
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
   useDisclosure,
-  Input,
 } from "@nextui-org/react";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import ListMenu from "../list-menu";
 import { SearchDrawer } from "./search-drawer";
-import Image from "next/image";
 
 function MenuDrawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <>
-      <Button isIconOnly variant="ghost" onPress={onOpen}>
+      <Button isIconOnly variant="ghost" onClick={onOpen}>
         <Menu />
       </Button>
       <Modal
@@ -76,7 +76,7 @@ function MenuDrawer() {
 
 export default function Header() {
   return (
-    <header className="w-full h-16 border-b  border-slate-800/50 block md:hidden sticky top-0 left-0 right-0 z-[20] bg-slate-950 backdrop-blur-sm">
+    <header className="w-full h-16 border-b  border-slate-800/50 inline-block md:hidden sticky top-0 left-0 right-0 z-[20] bg-slate-950 backdrop-blur-sm">
       <div className="w-full h-full flex items-center gap-4 container mx-auto px-4">
         <Link href="/">
           <Image

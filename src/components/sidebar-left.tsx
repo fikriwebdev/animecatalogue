@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import ListMenu from "./list-menu";
 import Image from "next/image";
+import Link from "next/link";
 
 const menu = [
   {
@@ -79,7 +80,7 @@ const menu = [
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2 p-4">
+    <Link href="/" className="flex items-center gap-2 p-4">
       <Image
         src="/assets/images/logo.png"
         width={48}
@@ -93,7 +94,7 @@ const Logo = () => {
       <h1 className="text-lg font-bold bg-gradient-to-r from-purple-500 to-orange-500 bg-clip-text text-transparent leading-5">
         Anime <br /> Catalogue
       </h1>
-    </div>
+    </Link>
   );
 };
 

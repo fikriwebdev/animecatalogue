@@ -45,7 +45,7 @@ export function SearchDrawer() {
   return (
     <>
       <Button
-        onPress={onOpen}
+        onClick={onOpen}
         startContent={<Search className="w-4 h-4 text-primary-500" />}
         variant="flat"
         className="w-full border-1 border-primary-800 justify-start text-primary-500"
