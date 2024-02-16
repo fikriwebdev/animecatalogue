@@ -1,7 +1,7 @@
 "use client";
 
 import { AvailableSeasonsResults } from "@/libs/get-available-seasons";
-import { Tab, Tabs } from "@nextui-org/react";
+import { Tab, Tabs } from "@nextui-org/tabs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type SeasonTabsProps = {

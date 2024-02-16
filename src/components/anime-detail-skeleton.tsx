@@ -1,4 +1,4 @@
-import { Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/skeleton";
 import AnimeSkeletonGridList from "./anime-skeleton-grid-list";
 
 export default function AnimeDetailSkeleton() {

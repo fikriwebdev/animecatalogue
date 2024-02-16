@@ -1,6 +1,9 @@
 import AnimeCarousel from "@/components/anime-carousel";
 import { AnimeDetailResult } from "@/libs/get-anime-detail";
-import { Card, CardBody, Chip, Image } from "@nextui-org/react";
+import { Card, CardBody } from "@nextui-org/card";
+import { Chip } from "@nextui-org/chip";
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 
 type ViewAnimeDetailProps = {
   data: AnimeDetailResult;
@@ -29,12 +32,16 @@ export default function ViewAnimeDetail({
     <div>
       <div className="flex flex-col md:grid grid-cols-12 gap-4 mb-4 p-4">
         <div className="col-span-3 w-full">
-          <Image
-            src={poster}
-            alt={jp_title}
-            className="w-full h-[250px] md:h-[350px] rounded-md object-cover object-center"
-            removeWrapper
-          />
+          <div className="relative w-full h-[250px] md:h-[350px] ">
+            <Image
+              as={NextImage}
+              src={poster}
+              alt={jp_title}
+              className="rounded-md object-cover object-center"
+              removeWrapper
+              fill
+            />
+          </div>
         </div>
         <div className="col-span-9">
           <h1 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -73,21 +80,29 @@ export default function ViewAnimeDetail({
               key={character.char_name}
               className="h-[300px] bg-primary-800"
             >
-              <div className="grid grid-cols-2 h-1/2">
-                <Image
-                  src={character.char_img}
-                  alt={character.char_name}
-                  className="w-full h-full object-cover object-center"
-                  removeWrapper
-                  radius="none"
-                />
-                <Image
-                  src={character.voice_char_img}
-                  alt={character.voice_char_name}
-                  className="w-full h-full object-cover object-center"
-                  removeWrapper
-                  radius="none"
-                />
+              <div className="grid grid-cols-2 h-1/2 relative">
+                <div className="w-full h-full relative">
+                  <Image
+                    as={NextImage}
+                    src={character.char_img}
+                    alt={character.char_name}
+                    className="w-full h-full object-cover object-center"
+                    removeWrapper
+                    radius="none"
+                    fill
+                  />
+                </div>
+                <div className="w-full h-full relative">
+                  <Image
+                    as={NextImage}
+                    src={character.voice_char_img}
+                    alt={character.voice_char_name}
+                    className="w-full h-full object-cover object-center"
+                    removeWrapper
+                    radius="none"
+                    fill
+                  />
+                </div>
               </div>
               <CardBody className="mt-2 md:mt-10">
                 <p>{character.voice_char_name} as</p>
@@ -102,14 +117,21 @@ export default function ViewAnimeDetail({
         <h1 className="text-3xl font-semibold  mb-6">Staff</h1>
         <div className="mt-4 grid grid-cols-2 md:grid-cols-5 gap-4">
           {staffs.map((staff) => (
-            <Card key={staff.char_name} className="h-[300px] bg-primary-800">
-              <Image
-                src={staff.char_img}
-                alt={staff.char_name}
-                className="w-full h-[70%] object-cover object-center"
-                removeWrapper
-                radius="none"
-              />
+            <Card
+              key={staff.char_name}
+              className="h-[300px] bg-primary-800 relative"
+            >
+              <div className="relative w-full h-[70%] ">
+                <Image
+                  as={NextImage}
+                  src={staff.char_img}
+                  alt={staff.char_name}
+                  className="object-cover object-center"
+                  removeWrapper
+                  radius="none"
+                  fill
+                />
+              </div>
 
               <CardBody className="mt-2 md:mt-1">
                 <p>{staff.char_name}</p>

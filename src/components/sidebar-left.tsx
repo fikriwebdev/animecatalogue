@@ -1,82 +1,8 @@
 "use client";
 
-import {
-  BellPlus,
-  Home,
-  LayoutList,
-  Leaf,
-  MessageCircleHeart,
-  Ship,
-  Sparkles,
-  Star,
-  ThumbsUp,
-} from "lucide-react";
-import ListMenu from "./list-menu";
 import Image from "next/image";
 import Link from "next/link";
-
-const menu = [
-  {
-    label: "Menu",
-    items: [
-      {
-        icon: <Home />,
-        title: "Home",
-        href: "/",
-      },
-      {
-        icon: <ThumbsUp />,
-        title: "Top Anime Series",
-        href: "/top-anime",
-      },
-      {
-        icon: <Ship />,
-        title: "Top Airing Anime",
-        href: "/top-airing",
-      },
-      {
-        icon: <Sparkles />,
-        title: "Most Popular",
-        href: "/popular",
-      },
-      {
-        icon: <Star />,
-        title: "Most Favorited",
-        href: "/favorite",
-      },
-    ],
-  },
-  {
-    label: "Categories",
-    items: [
-      {
-        icon: <Leaf />,
-        title: "Seasonal Anime",
-        href: "/season",
-      },
-      {
-        icon: <LayoutList />,
-        title: "Genres",
-        href: "/genres",
-      },
-    ],
-  },
-  {
-    label: "General",
-    items: [
-      {
-        icon: <MessageCircleHeart />,
-        title: "Reviews",
-        href: "/reviews",
-      },
-      {
-        icon: <BellPlus />,
-        title: "New Anime Added",
-        href: "/new-anime",
-      },
-    ],
-  },
-];
+import ListMenu from "./list-menu";
 
 const Logo = () => {
   return (

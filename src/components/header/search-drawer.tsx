@@ -1,15 +1,18 @@
 "use client";
 
 import {
-  Button,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@nextui-org/modal";
+
+import { Button } from "@nextui-org/button";
+
+import { Input } from "@nextui-org/input";
+
 import { Search } from "lucide-react";
 import React from "react";
 import { SearchResult } from "../sidebar-right/search-anime";

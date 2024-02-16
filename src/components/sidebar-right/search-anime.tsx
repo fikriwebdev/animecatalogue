@@ -1,7 +1,8 @@
 "use client";
 
 import { type AnimeByQueryResult } from "@/libs/get-anime-by-query";
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
 import { Search } from "lucide-react";
 import React, { PropsWithChildren } from "react";
 import useSWR from "swr";

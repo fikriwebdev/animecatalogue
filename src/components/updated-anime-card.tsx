@@ -1,6 +1,9 @@
 import { type LatestUpdateAnime } from "@/libs/get-latest-updated-anime";
-import { Card, CardFooter, Chip, Image } from "@nextui-org/react";
+import { Card, CardFooter } from "@nextui-org/card";
+import { Chip } from "@nextui-org/chip";
+import { Image } from "@nextui-org/image";
 import { Crown } from "lucide-react";
+import NextImage from "next/image";
 
 import Link from "next/link";
 import React from "react";
@@ -14,12 +17,16 @@ export default function UpdatedAnimeCard({
   return (
     <Link href={href} key={title}>
       <Card className="w-full h-[210px] bg-primary-800">
-        <Image
-          src={image}
-          className="w-full h-1/2 object-cover object-center rounded-none"
-          alt={title}
-          removeWrapper
-        />
+        <div className="w-full h-1/2 relative">
+          <Image
+            as={NextImage}
+            src={image}
+            className="w-full h-1/2 object-cover object-center rounded-none"
+            alt={title}
+            removeWrapper
+            fill
+          />
+        </div>
         <p className="line-clamp-3 text-xs m-4">{title}</p>
         <CardFooter className="absolute bottom-0">
           <div>

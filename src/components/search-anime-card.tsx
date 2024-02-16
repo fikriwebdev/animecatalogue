@@ -1,8 +1,9 @@
 import { type AnimeQueryResult } from "@/libs/get-anime-by-query";
-import { Card, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardFooter } from "@nextui-org/card";
+import { Image } from "@nextui-org/image";
 import { Star } from "lucide-react";
-
 import Link from "next/link";
+import NextImage from "next/image";
 
 export default function SearchAnimeCard({
   href,
@@ -16,6 +17,7 @@ export default function SearchAnimeCard({
     <Link href={href} key={title}>
       <Card className="w-full h-[210px] bg-primary-800">
         <Image
+          as={NextImage}
           src={img}
           className="w-full h-1/2 object-cover object-center rounded-none"
           alt={title}

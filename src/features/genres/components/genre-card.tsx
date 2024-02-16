@@ -1,7 +1,8 @@
 import { GenreItem } from "@/libs/get-genres";
-import { Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 import Link from "next/link";
 import React from "react";
+import NextImage from "next/image";
 
 type GenreCardProps = GenreItem;
 
@@ -18,10 +19,12 @@ export default function GenreCard({ label, href }: GenreCardProps) {
         <div className="absolute w-full h-full inset-0 backdrop-blur-md bg-white/10 z-[2]"></div>
         <p className="absolute z-[3] max-w-[90%]">{label}</p>
         <Image
+          as={NextImage}
           src={images[0]}
           alt={label}
           removeWrapper
           className="w-full object-cover object-center h-full absolute right-0 z-[1] !opacity-40 bg-red-500"
+          fill
         />
       </div>
     </Link>

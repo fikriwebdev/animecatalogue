@@ -1,7 +1,7 @@
 "use client";
 
 import { type Result } from "@/libs/get-top-anime";
-import { Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 

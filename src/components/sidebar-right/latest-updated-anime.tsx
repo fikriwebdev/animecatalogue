@@ -2,7 +2,7 @@ import getLatestUpdatedAnime from "@/libs/get-latest-updated-anime";
 import React from "react";
 import UpdatedAnimeCard from "../updated-anime-card";
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
 
 export default async function LatestUpdatedAnime() {
   const latestUpdatedAnime = await getLatestUpdatedAnime();

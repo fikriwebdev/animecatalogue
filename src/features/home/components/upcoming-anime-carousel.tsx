@@ -19,6 +19,8 @@ import { Image } from "@nextui-org/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+import NextImage from "next/image";
+
 type SlideAnimeCarouselProps = {
   anime: SlideAnimeResult;
 };
@@ -64,14 +66,16 @@ export default function UpcomingAnimeCarousel({
           <SwiperSlide key={item.href} className="relative">
             <Link href={item.href}>
               <Card
-                className="w-full h-[350px] opacity-100  hover:opacity-75 !transition-opacity duration-500"
+                className="w-full h-[350px] relative opacity-100  hover:opacity-75 !transition-opacity duration-500"
                 isFooterBlurred
               >
                 <Image
+                  as={NextImage}
                   src={item.image}
                   className="object-cover object-top w-full h-full z-0"
                   alt={item.title}
                   removeWrapper
+                  fill
                 />
                 <CardFooter className="absolute bg-slate-900/50 bottom-0 border-t-1 border-slate-100/20 z-10 justify-between h-14">
                   <p className="font-semibold text-xs line-clamp-3">
