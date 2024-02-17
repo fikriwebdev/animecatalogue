@@ -15,14 +15,17 @@ export default function SearchAnimeCard({
 }: AnimeQueryResult) {
   return (
     <Link href={href} key={title}>
-      <Card className="w-full h-[210px] bg-primary-800">
-        <Image
-          as={NextImage}
-          src={img}
-          className="w-full h-1/2 object-cover object-center rounded-none"
-          alt={title}
-          removeWrapper
-        />
+      <Card className="w-full h-[210px] bg-primary-800 relative">
+        <div className="w-full h-1/2 relative">
+          <Image
+            as={NextImage}
+            src={img}
+            className="object-cover object-center rounded-none"
+            alt={title}
+            removeWrapper
+            fill
+          />
+        </div>
         <p className="line-clamp-2 text-xs m-4">{title}</p>
         <CardFooter className="absolute bottom-0 ">
           <div className="flex flex-col gap-1 text-xs px-1">

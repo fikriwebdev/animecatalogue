@@ -1,4 +1,5 @@
-import ViewTopAnime from "@/features/top-anime";
+import AnimeGridList from "@/components/anime-grid-list";
+import { getTopAnime } from "@/libs/get-top-anime";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,9 @@ type TopAnimeProps = {
   };
 };
 
-export default function TopAnime({ searchParams }: TopAnimeProps) {
-  return <ViewTopAnime page={searchParams.page || "1"} />;
+export default async function TopAnime({ searchParams }: TopAnimeProps) {
+  const page = searchParams.page || "1";
+  const topAnime = await getTopAnime("bypopularity", +page);
+
+  return <AnimeGridList {...topAnime} title="Top Anime Series" />;
 }

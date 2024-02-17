@@ -1,4 +1,5 @@
-import ViewPopularAnime from "@/features/popular";
+import AnimeGridList from "@/components/anime-grid-list";
+import { getTopAnime } from "@/libs/get-top-anime";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,12 @@ type PopularAnimeProps = {
   };
 };
 
-export default function PopularAnime({ searchParams }: PopularAnimeProps) {
-  return <ViewPopularAnime page={searchParams.page || "1"} />;
+export default async function PopularAnime({
+  searchParams,
+}: PopularAnimeProps) {
+  const page = searchParams.page || "1";
+
+  const popularAnime = await getTopAnime("bypopularity", +page);
+
+  return <AnimeGridList {...popularAnime} title="Most Popular Anime" />;
 }

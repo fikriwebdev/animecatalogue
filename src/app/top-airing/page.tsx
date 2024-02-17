@@ -1,4 +1,5 @@
-import ViewTopAiring from "@/features/top-airing";
+import AnimeGridList from "@/components/anime-grid-list";
+import { getTopAnime } from "@/libs/get-top-anime";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,9 @@ type TopAiringProps = {
   };
 };
 
-export default function TopAiring({ searchParams }: TopAiringProps) {
-  return <ViewTopAiring page={searchParams.page || "1"} />;
+export default async function TopAiring({ searchParams }: TopAiringProps) {
+  const page = searchParams.page || "1";
+  const airingAnime = await getTopAnime("airing", +page);
+
+  return <AnimeGridList {...airingAnime} title="Top Airing Anime" />;
 }

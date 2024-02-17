@@ -1,4 +1,5 @@
-import ViewFavoriteAnime from "@/features/favorite";
+import AnimeGridList from "@/components/anime-grid-list";
+import { getTopAnime } from "@/libs/get-top-anime";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,12 @@ type FavoriteAnimeProps = {
   };
 };
 
-export default function FavoriteAnime({ searchParams }: FavoriteAnimeProps) {
-  return <ViewFavoriteAnime page={searchParams.page || "1"} />;
+export default async function FavoriteAnime({
+  searchParams,
+}: FavoriteAnimeProps) {
+  const page = searchParams.page || "1";
+
+  const favoritAnime = await getTopAnime("favorite", +page);
+
+  return <AnimeGridList {...favoritAnime} title="Most Favorited Anime" />;
 }

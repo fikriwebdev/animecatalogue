@@ -7,7 +7,7 @@ import { type AnimeByQueryResult } from "@/libs/get-anime-by-query";
 import { Chip } from "@nextui-org/chip";
 import { Input } from "@nextui-org/input";
 import { Pagination } from "@nextui-org/pagination";
-import { Search } from "lucide-react";
+import { Search as IconSearch } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import useSWR from "swr";
@@ -83,7 +83,7 @@ function SearchResult({ search }: SearchResultProps) {
   );
 }
 
-export default function ViewSearch() {
+export default function Search() {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -108,7 +108,7 @@ export default function ViewSearch() {
           inputWrapper:
             "bg-primary-800 group-data-[hover=true]:bg-primary-700 group-data-[focus=true]:bg-primary-700",
         }}
-        startContent={<Search />}
+        startContent={<IconSearch />}
         placeholder="Type to search"
         radius="full"
         size="sm"

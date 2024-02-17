@@ -1,7 +1,7 @@
-import ViewSeasonAnime from "@/features/season";
+import getAvailableSeasons from "@/libs/get-available-seasons";
 import { Metadata } from "next";
-import React from "react";
-import { defaultTitle } from "../layout";
+import SeasonAnimeGridList from "./_components/season-anime-grid-list";
+import SeasonTabs from "./_components/season-tabs";
 
 export const metadata: Metadata = {
   title: `Seasonal Anime`,
@@ -15,6 +15,15 @@ type SeasonAnimeProps = {
   };
 };
 
-export default function SeasonAnime({ searchParams }: SeasonAnimeProps) {
-  return <ViewSeasonAnime tab={searchParams.tab || ""} />;
+export default async function SeasonAnime({ searchParams }: SeasonAnimeProps) {
+  const seasons = await getAvailableSeasons();
+
+  const defaulTab = seasons.filter((season) => season.isDefault)[0];
+
+  return (
+    <div className="p-4">
+      <SeasonTabs tabs={seasons} />
+      <SeasonAnimeGridList tab={searchParams.tab || defaulTab.href} />
+    </div>
+  );
 }
