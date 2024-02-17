@@ -16,6 +16,7 @@ export default async function Genres() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">All Anime Genres</h1>
       </div>
+
       <div className="mt-4">
         {genres.map((genre) => (
           <div key={genre.title} className="mb-8">

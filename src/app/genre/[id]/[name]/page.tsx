@@ -1,6 +1,5 @@
-import SeasonAnimeCard from "@/features/season/components/season-anime-card";
+import SeasonAnimeCard from "@/components/season-anime-card";
 import getAnimeByGenre from "@/libs/get-anime-by-genre";
-import React from "react";
 import Pagination from "../_components/pagination";
 
 type GenresProps = {

@@ -1,5 +1,5 @@
+import SeasonAnimeCard from "@/components/season-anime-card";
 import getAnimeBySeason from "@/libs/get-anime-by-season";
-import SeasonAnimeCard from "./season-anime-card";
 
 type SeasonAnimeGridListProps = {
   tab: string;
