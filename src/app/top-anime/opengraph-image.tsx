@@ -6,11 +6,11 @@ export const runtime = "edge";
 // Image metadata
 export const alt = "Anime Catalogue";
 export const size = {
-  width: 350,
-  height: 350,
+  width: 1200,
+  height: 630,
 };
 
-export const contentType = "image/jpg";
+export const contentType = "image/jpeg";
 
 // Image generation
 export default async function Image() {
