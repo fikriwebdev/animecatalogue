@@ -1,21 +1,22 @@
-import getAnimeByGenre from "@/libs/get-anime-by-genre";
-import React from "react";
-import Pagination from "./_components/pagination";
 import SeasonAnimeCard from "@/components/season-anime-card";
+import getAnimeByGenre from "@/libs/get-anime-by-genre";
+
+import { Suspense } from "react";
+import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
+import Pagination from "./_components/pagination";
 
 type GenresProps = {
   params: {
     id: string;
+    name: string;
   };
   searchParams: {
     page: string;
   };
 };
 
-export default async function Genres({ params, searchParams }: GenresProps) {
-  const page = +searchParams.page || 1;
-
-  const genre = await getAnimeByGenre(`/${params.id}/?page=${page}`);
+const MainContent = async ({ path, page }: { path: string; page: number }) => {
+  const genre = await getAnimeByGenre(path);
 
   return (
     <div className="p-4">
@@ -27,5 +28,17 @@ export default async function Genres({ params, searchParams }: GenresProps) {
       </div>
       <Pagination page={page} totalPage={+genre.totalPage} />
     </div>
+  );
+};
+
+export default async function Genres({ params, searchParams }: GenresProps) {
+  const page = +searchParams.page || 1;
+
+  const path = `/${params.id}/${params.name}/?page=${page}`;
+
+  return (
+    <Suspense key={path} fallback={<AnimeSkeletonGridList />}>
+      <MainContent path={path} page={page} />
+    </Suspense>
   );
 }

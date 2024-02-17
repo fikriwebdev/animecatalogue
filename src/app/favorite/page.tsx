@@ -1,6 +1,8 @@
 import AnimeGridList from "@/components/anime-grid-list";
+import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
 import { getTopAnime } from "@/libs/get-top-anime";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: `Most Favorited Anime`,
@@ -14,12 +16,20 @@ type FavoriteAnimeProps = {
   };
 };
 
+const FavoriteAnimeList = async ({ page }: { page: string }) => {
+  const favoritAnime = await getTopAnime("favorite", +page);
+
+  return <AnimeGridList {...favoritAnime} title="Most Favorited Anime" />;
+};
+
 export default async function FavoriteAnime({
   searchParams,
 }: FavoriteAnimeProps) {
   const page = searchParams.page || "1";
 
-  const favoritAnime = await getTopAnime("favorite", +page);
-
-  return <AnimeGridList {...favoritAnime} title="Most Favorited Anime" />;
+  return (
+    <Suspense key={page} fallback={<AnimeSkeletonGridList />}>
+      <FavoriteAnimeList page={page} />
+    </Suspense>
+  );
 }

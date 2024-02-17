@@ -1,7 +1,9 @@
 import getAvailableSeasons from "@/libs/get-available-seasons";
 import { Metadata } from "next";
-import SeasonAnimeGridList from "./_components/season-anime-grid-list";
 import SeasonTabs from "./_components/season-tabs";
+import SeasonAnimeGridList from "./_components/season-anime-grid-list";
+import { Suspense } from "react";
+import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
 
 export const metadata: Metadata = {
   title: `Seasonal Anime`,
@@ -15,7 +17,7 @@ type SeasonAnimeProps = {
   };
 };
 
-export default async function SeasonAnime({ searchParams }: SeasonAnimeProps) {
+const SeasonAnimeList = async ({ tab }: { tab: string }) => {
   const seasons = await getAvailableSeasons();
 
   const defaulTab = seasons.filter((season) => season.isDefault)[0];
@@ -23,7 +25,17 @@ export default async function SeasonAnime({ searchParams }: SeasonAnimeProps) {
   return (
     <div className="p-4">
       <SeasonTabs tabs={seasons} />
-      <SeasonAnimeGridList tab={searchParams.tab || defaulTab.href} />
+      <Suspense key={tab} fallback={<AnimeSkeletonGridList />}>
+        <SeasonAnimeGridList tab={tab || defaulTab.href} />
+      </Suspense>
     </div>
+  );
+};
+
+export default async function SeasonAnime({ searchParams }: SeasonAnimeProps) {
+  return (
+    <Suspense fallback={null}>
+      <SeasonAnimeList tab={searchParams.tab} />
+    </Suspense>
   );
 }

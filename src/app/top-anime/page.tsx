@@ -1,6 +1,8 @@
 import AnimeGridList from "@/components/anime-grid-list";
+import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
 import { getTopAnime } from "@/libs/get-top-anime";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: `Top Anime`,
@@ -14,9 +16,18 @@ type TopAnimeProps = {
   };
 };
 
-export default async function TopAnime({ searchParams }: TopAnimeProps) {
-  const page = searchParams.page || "1";
+const TopAnimeList = async ({ page }: { page: string }) => {
   const topAnime = await getTopAnime("bypopularity", +page);
 
   return <AnimeGridList {...topAnime} title="Top Anime Series" />;
+};
+
+export default async function TopAnime({ searchParams }: TopAnimeProps) {
+  const page = searchParams.page || "1";
+
+  return (
+    <Suspense key={page} fallback={<AnimeSkeletonGridList />}>
+      <TopAnimeList page={page} />
+    </Suspense>
+  );
 }
