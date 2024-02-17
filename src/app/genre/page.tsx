@@ -1,6 +1,7 @@
 import getGenres from "@/libs/get-genres";
 import type { Metadata } from "next";
 import GenreCard from "./_components/genre-card";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: `All Genre`,
@@ -13,6 +14,21 @@ export default async function Genres() {
 
   return (
     <div className="p-4">
+      <div className="mt-8 mb-4">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Genre",
+              href: "/genre",
+            },
+          ]}
+        />
+      </div>
+
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">All Anime Genres</h1>
       </div>

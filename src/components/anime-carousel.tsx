@@ -16,6 +16,7 @@ import AnimeCard from "./anime-card";
 import { Gasoek_One } from "next/font/google";
 import AnimeSkeletonGridList from "./anime-skeleton-grid-list";
 import Link from "next/link";
+import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 
 const GasoekOne = Gasoek_One({ subsets: ["latin"], weight: ["400"] });
 

@@ -2,6 +2,7 @@ import PaginationButton from "@/components/pagination-button";
 import getReviews from "@/libs/get-reviews";
 import type { Metadata } from "next";
 import ReviewCard from "./_components/review-card";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: `Anime Reviews`,
@@ -21,6 +22,21 @@ export default async function Reviews({ searchParams }: ReviewsProps) {
 
   return (
     <div className="p-4">
+      <div className="mt-8 mb-4">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Reviews",
+              href: "/reviews",
+            },
+          ]}
+        />
+      </div>
+
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold mb-4">Reviews</h1>
         <PaginationButton hasNextPage />

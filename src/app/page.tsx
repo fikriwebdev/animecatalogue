@@ -73,13 +73,13 @@ export default function ViewHome() {
       <Suspense fallback={<AnimeSkeletonGridList />}>
         <TopAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGridList />}>
+      <Suspense>
         <TopAiringAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGridList />}>
+      <Suspense>
         <PopularAnimeCarousel />
       </Suspense>
-      <Suspense fallback={<AnimeSkeletonGridList />}>
+      <Suspense>
         <FavoriteAnime />
       </Suspense>
     </>

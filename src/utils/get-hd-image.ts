@@ -8,5 +8,5 @@ export default function getHDImage(src: string) {
   url.hash = "";
   url.search = "";
 
-  return url.toString().replace(".jpg", ".webp");
+  return url.toString();
 }

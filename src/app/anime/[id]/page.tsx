@@ -6,6 +6,7 @@ import { Card, CardBody } from "@nextui-org/card";
 import { Chip } from "@nextui-org/chip";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 export async function generateMetadata({
   params,
@@ -55,6 +56,24 @@ export default async function AnimeDetailPage({
 
   return (
     <div>
+      <div className="px-4 mt-8 mb-4">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Anime",
+              href: "/search",
+            },
+            {
+              label: jp_title,
+              href: "/",
+            },
+          ]}
+        />
+      </div>
       <div className="flex flex-col md:grid grid-cols-12 gap-4 mb-4 p-4">
         <div className="col-span-3 w-full">
           <div className="relative w-full h-[250px] md:h-[350px] ">

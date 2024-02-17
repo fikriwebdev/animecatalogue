@@ -4,6 +4,7 @@ import SeasonTabs from "./_components/season-tabs";
 import SeasonAnimeGridList from "./_components/season-anime-grid-list";
 import { Suspense } from "react";
 import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: `Seasonal Anime`,
@@ -24,6 +25,21 @@ const SeasonAnimeList = async ({ tab }: { tab: string }) => {
 
   return (
     <div className="p-4">
+      <div className="px-4 mt-8 mb-4">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Season",
+              href: "/season",
+            },
+          ]}
+        />
+      </div>
+
       <SeasonTabs tabs={seasons} />
       <Suspense key={tab} fallback={<AnimeSkeletonGridList />}>
         <SeasonAnimeGridList tab={tab || defaulTab.href} />

@@ -1,5 +1,6 @@
 import AnimeGridList from "@/components/anime-grid-list";
 import AnimeSkeletonGridList from "@/components/anime-skeleton-grid-list";
+import Breadcrumbs from "@/components/breadcrumbs";
 import { getTopAnime } from "@/libs/get-top-anime";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -19,7 +20,25 @@ type TopAiringProps = {
 const TopAiringList = async ({ page }: { page: string }) => {
   const airingAnime = await getTopAnime("airing", +page);
 
-  return <AnimeGridList {...airingAnime} title="Top Airing Anime" />;
+  return (
+    <>
+      <div className="px-4 mt-8">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Top Airing Anime",
+              href: "/top-airing",
+            },
+          ]}
+        />
+      </div>
+      <AnimeGridList {...airingAnime} title="Top Airing Anime" />
+    </>
+  );
 };
 
 export default async function TopAiring({ searchParams }: TopAiringProps) {

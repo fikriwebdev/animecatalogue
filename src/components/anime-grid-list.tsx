@@ -16,7 +16,7 @@ export default function AnimeGridList({
   return (
     <>
       <div className="flex items-center justify-between mb-8 p-4">
-        <h1 className="text-2xl md:text-3xl font-semibold ">{title}</h1>
+        <h1 className="text-xl md:text-3xl font-semibold ">{title}</h1>
         <PaginationButton hasNextPage={!!hasNextPage} />
       </div>
       <div className="flex flex-col gap-4">

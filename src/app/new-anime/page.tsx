@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/breadcrumbs";
 import UpdatedAnimeCard from "@/components/updated-anime-card";
 import getLatestUpdatedAnime from "@/libs/get-latest-updated-anime";
 import type { Metadata } from "next";
@@ -13,6 +14,20 @@ export default async function NewAnime() {
 
   return (
     <div className="p-4">
+      <div className="mb-4 mt-8">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "New anime added",
+              href: "/new-anime",
+            },
+          ]}
+        />
+      </div>
       <h1 className="text-xl md:text-3xl font-semibold ">New Anime Added</h1>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-4">
         {animes.map((anime) => (
