@@ -18,7 +18,11 @@ import React from "react";
 import { SearchResult } from "../sidebar-right/search-anime";
 import { useDebounce } from "use-debounce";
 
-function Result() {
+type ResultProps = {
+  onClose?: () => void;
+};
+
+function Result({ onClose }: ResultProps) {
   const [search, setSearch] = React.useState("");
   const [debouncedSearch] = useDebounce(search, 500);
   return (
@@ -75,7 +79,7 @@ export function SearchDrawer() {
               <ModalHeader className="flex flex-col gap-1" />
 
               <ModalBody>
-                <Result />
+                <Result onClose={onClose} />
               </ModalBody>
               <ModalFooter />
             </>

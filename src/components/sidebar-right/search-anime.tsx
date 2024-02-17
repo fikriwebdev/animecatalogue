@@ -13,9 +13,10 @@ import { useDebounce } from "use-debounce";
 
 type SearchResultProps = {
   search: string;
+  onClose?: () => void;
 };
 
-export function SearchResult({ search }: SearchResultProps) {
+export function SearchResult({ search, onClose }: SearchResultProps) {
   const { data, error } = useSWR<AnimeByQueryResult>(
     `/api/search?query=${search}&limit=6`,
     (url: string) => fetch(url).then((res) => res.json())
@@ -42,7 +43,7 @@ export function SearchResult({ search }: SearchResultProps) {
       </p>
       <div className="grid grid-cols-2 gap-4 mt-4">
         {data.anime.map((anime) => (
-          <SearchAnimeCard key={anime.href} {...anime} />
+          <SearchAnimeCard key={anime.href} {...anime} onClose={onClose} />
         ))}
       </div>
       <Link

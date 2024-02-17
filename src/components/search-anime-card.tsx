@@ -12,9 +12,18 @@ export default function SearchAnimeCard({
   eps,
   rating,
   type,
-}: AnimeQueryResult) {
+  onClose,
+}: AnimeQueryResult & { onClose?: () => void }) {
   return (
-    <Link href={href} key={title}>
+    <Link
+      href={href}
+      key={title}
+      onClick={() => {
+        if (onClose) {
+          onClose();
+        }
+      }}
+    >
       <Card className="w-full h-[210px] bg-primary-800 relative">
         <div className="w-full h-1/2 relative">
           <Image
