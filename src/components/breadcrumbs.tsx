@@ -18,7 +18,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <NextUIBreadcrumbs>
       {items.map((item) => (
-        <BreadcrumbItem key={item.href} href={item.href}>
+        <BreadcrumbItem key={item.label} href={item.href}>
           {item.label}
         </BreadcrumbItem>
       ))}

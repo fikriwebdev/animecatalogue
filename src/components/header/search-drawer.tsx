@@ -17,6 +17,7 @@ import { Search } from "lucide-react";
 import React from "react";
 import { SearchResult } from "../sidebar-right/search-anime";
 import { useDebounce } from "use-debounce";
+import { usePathname } from "next/navigation";
 
 type ResultProps = {
   onClose?: () => void;
@@ -44,13 +45,18 @@ function Result({ onClose }: ResultProps) {
           onChange={(event) => setSearch(event.target.value)}
         />
       </div>
-      {debouncedSearch ? <SearchResult search={debouncedSearch} /> : null}
+      {debouncedSearch ? (
+        <SearchResult search={debouncedSearch} onClose={onClose} />
+      ) : null}
     </div>
   );
 }
 
 export function SearchDrawer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const pathname = usePathname();
+
   return (
     <>
       <Button
@@ -62,6 +68,7 @@ export function SearchDrawer() {
         Search
       </Button>
       <Modal
+        key={pathname}
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         isDismissable={false}
