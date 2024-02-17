@@ -30,7 +30,7 @@ export default async function generateOgImage(
         />
         <p
           style={{
-            fontSize: 88,
+            fontSize: 64,
             fontWeight: "semibold",
             position: "absolute",
             textAlign: "center",
@@ -42,12 +42,12 @@ export default async function generateOgImage(
           {title}
         </p>
       </div>
-    ),
-    // ImageResponse options
-    {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageResponse's width and height.
-      ...size,
-    }
+      // // ImageResponse options
+      // {
+      //   // For convenience, we can re-use the exported opengraph-image
+      //   // size config to also set the ImageResponse's width and height.
+      //   ...size,
+      // }
+    )
   );
 }
