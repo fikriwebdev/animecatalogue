@@ -6,7 +6,7 @@ type Property = {
   item: string;
 };
 
-export type AnimeSeason = {
+export type AnimeGenre = {
   title: string;
   episode: string;
   date: string;
@@ -18,17 +18,23 @@ export type AnimeSeason = {
   href: string;
 };
 
-export type AnimeBySeasonResult = AnimeSeason[];
+export type AnimeGenreResult = {
+  title: string;
+  anime: AnimeGenre[];
+  totalPage: string;
+};
 
-export default async function getAnimeBySeason(
-  href: string
-): Promise<AnimeBySeasonResult> {
-  const response = await fetch(`https://myanimelist.net/anime${href}`);
-  const seasonAnimeText = await response.text();
+export default async function getAnimeByGenre(
+  path: string
+): Promise<AnimeGenreResult> {
+  const response = await fetch(`https://myanimelist.net/anime/genre${path}`);
+  const genreAnimeText = await response.text();
 
-  const $ = cheerio.load(seasonAnimeText);
+  const $ = cheerio.load(genreAnimeText);
 
-  const anime: AnimeSeason[] = $(
+  const title = $(".js-search-filter-block>span").text().trim();
+
+  const anime: AnimeGenre[] = $(
     ".seasonal-anime-list .js-anime-category-producer"
   )
     .toArray()
@@ -85,5 +91,12 @@ export default async function getAnimeBySeason(
       };
     });
 
-  return anime;
+  const paginationLink = $(".pagination .link").last().attr("href") || "";
+  const totalPage = new URL(paginationLink).searchParams.get("page") || "";
+
+  return {
+    title,
+    anime,
+    totalPage,
+  };
 }

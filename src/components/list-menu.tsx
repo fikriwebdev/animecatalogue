@@ -55,8 +55,8 @@ const menu = [
       },
       {
         icon: <LayoutList />,
-        title: "Genres",
-        href: "/genres",
+        title: "Genre",
+        href: "/genre",
       },
     ],
   },

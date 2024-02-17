@@ -41,7 +41,9 @@ export default async function getGenres(): Promise<GenresResult> {
 
               const label = $al("a").text();
               const hrefAttr = $al("a").attr();
-              const href = hrefAttr ? hrefAttr["href"] : "";
+              const href = hrefAttr
+                ? hrefAttr["href"].replace("/anime", "")
+                : "";
 
               return {
                 label,
