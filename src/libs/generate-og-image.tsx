@@ -26,7 +26,12 @@ export default async function generateOgImage(
         <img
           src={imageData}
           alt="base"
-          style={{ width: "100%", height: "100%" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
         />
         <p
           style={{
@@ -42,12 +47,12 @@ export default async function generateOgImage(
           {title}
         </p>
       </div>
-      // // ImageResponse options
-      // {
-      //   // For convenience, we can re-use the exported opengraph-image
-      //   // size config to also set the ImageResponse's width and height.
-      //   ...size,
-      // }
-    )
+    ),
+    // ImageResponse options
+    {
+      // For convenience, we can re-use the exported opengraph-image
+      // size config to also set the ImageResponse's width and height.
+      ...size,
+    }
   );
 }
