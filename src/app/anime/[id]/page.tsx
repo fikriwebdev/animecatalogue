@@ -80,7 +80,6 @@ export default async function AnimeDetailPage({
               src={poster}
               alt={jp_title}
               className="rounded-md object-cover object-center"
-              removeWrapper
             />
           </div>
         </div>

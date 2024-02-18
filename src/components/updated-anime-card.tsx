@@ -20,7 +20,7 @@ export default function UpdatedAnimeCard({
         <div className="w-full h-1/2 relative">
           <Image
             src={image}
-            className="w-full h-1/2 object-cover object-center rounded-none"
+            className="w-full h-full object-cover object-center rounded-none"
             alt={title}
             removeWrapper
           />

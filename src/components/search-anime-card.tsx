@@ -28,7 +28,7 @@ export default function SearchAnimeCard({
         <div className="w-full h-1/2 relative">
           <Image
             src={img}
-            className="object-cover object-center rounded-none"
+            className="object-cover object-center rounded-none w-full h-full"
             alt={title}
             removeWrapper
           />
