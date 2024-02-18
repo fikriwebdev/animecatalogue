@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Anime Catalogue is a comprehensive portfolio project aimed at showcasing my skills in web development. It is a clone of the popular MyAnimeList.net website, designed to provide a user-friendly platform for exploring and organizing your favorite anime and manga titles.
+
+[Website Demo](https://animecatalogue.vercel.app)
 
 ## Getting Started
 
@@ -16,21 +18,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
+**Listing Anime Season:** Discover upcoming anime in next season, ranking anime, most favorite, most popular, etc.
+**Responsive:** Responsive website for desktop and mobile
+**Listing Review Anime:** Listing review anime by user
+**Anime Search:** Search anime by specific keyword.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech Stack
+- [NextJS 14](nextjs.org) (App router)
+- [Cheerio](https://cheerio.js.org/) for scrape the data from MyAnimeList
+- [NextUI](nextui.org) for components library
+- etc
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to clone. Don't forget to give some ⭐ if you think this repo helful. Thankyou
