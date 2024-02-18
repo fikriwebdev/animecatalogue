@@ -20,8 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Features
 **Listing Anime Season:** Discover upcoming anime in next season, ranking anime, most favorite, most popular, etc.
+
 **Responsive:** Responsive website for desktop and mobile
+
 **Listing Review Anime:** Listing review anime by user
+
 **Anime Search:** Search anime by specific keyword.
 
 ## Tech Stack
