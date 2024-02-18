@@ -27,12 +27,10 @@ export default function SearchAnimeCard({
       <Card className="w-full h-[210px] bg-primary-800 relative">
         <div className="w-full h-1/2 relative">
           <Image
-            as={NextImage}
             src={img}
             className="object-cover object-center rounded-none"
             alt={title}
             removeWrapper
-            fill
           />
         </div>
         <p className="line-clamp-2 text-xs m-4">{title}</p>
@@ -43,7 +41,7 @@ export default function SearchAnimeCard({
               <p>({eps} eps)</p>
             </div>
             <div className="flex items-center gap-2">
-              <Star className="text-yellow-500 fill-yellow-500 w-3 h-3" />
+              <Star className="text-yellow-500 -yellow-500 w-3 h-3" />
               <p>{rating}</p>
             </div>
           </div>

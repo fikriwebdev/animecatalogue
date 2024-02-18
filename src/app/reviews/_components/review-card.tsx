@@ -6,8 +6,6 @@ import { Chip, ChipProps } from "@nextui-org/chip";
 import { Image } from "@nextui-org/image";
 import { Star } from "lucide-react";
 import Link from "next/link";
-import React from "react";
-import NextImage from "next/image";
 
 const getChipColor = (sentimen: string): ChipProps["color"] => {
   switch (sentimen) {
@@ -59,7 +57,6 @@ export default function ReviewCard({
       <div className="mt-4">
         <div className="flex mt-4 items-center gap-2">
           <Image
-            as={NextImage}
             src={anime.image}
             alt={anime.title}
             removeWrapper

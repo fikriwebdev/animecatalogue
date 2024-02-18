@@ -19,12 +19,10 @@ export default function UpdatedAnimeCard({
       <Card className="w-full h-[210px] bg-primary-800">
         <div className="w-full h-1/2 relative">
           <Image
-            as={NextImage}
             src={image}
             className="w-full h-1/2 object-cover object-center rounded-none"
             alt={title}
             removeWrapper
-            fill
           />
         </div>
         <p className="line-clamp-3 text-xs m-4">{title}</p>

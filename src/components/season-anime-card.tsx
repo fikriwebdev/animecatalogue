@@ -22,12 +22,10 @@ export default function SeasonAnimeCard({
     <Link href={href}>
       <div className="w-full h-[300px] md:h-[500px] bg-primary rounded-lg overflow-hidden relative group">
         <Image
-          as={NextImage}
           src={image}
           className="w-full h-full object-cover object-center rounded-none z-[1] group-hover:scale-110 !transition-transform duration-500"
           alt={title}
           removeWrapper
-          fill
         />
         <div className="absolute w-full h-full bg-gradient-to-b from-transparent  to-black/100 bottom-0 z-[2] p-2"></div>
         <div className="absolute bottom-4 p-2 w-full z-[3]">

@@ -28,12 +28,10 @@ export default function AnimeCard({
         isFooterBlurred
       >
         <Image
-          as={NextImage}
           src={image}
           className="object-cover object-top w-full h-full z-0"
           alt={title}
           removeWrapper
-          fill
         />
 
         <CardFooter className="absolute bg-slate-900/50 bottom-0 border-t-1 border-slate-100/20 z-10 justify-between h-16 w-full">
@@ -44,7 +42,7 @@ export default function AnimeCard({
             </div>
             {rating ? (
               <div className="flex items-center gap-2">
-                <Star className="text-yellow-500 fill-yellow-500" />
+                <Star className="text-yellow-500 -yellow-500" />
                 <p>{rating}</p>
               </div>
             ) : null}

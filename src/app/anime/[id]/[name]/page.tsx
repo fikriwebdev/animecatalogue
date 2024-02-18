@@ -2,11 +2,10 @@ import { getAnimeDetail } from "@/libs/get-anime-detail";
 import type { Metadata } from "next";
 
 import AnimeCarousel from "@/components/anime-carousel";
+import Breadcrumbs from "@/components/breadcrumbs";
 import { Card, CardBody } from "@nextui-org/card";
 import { Chip } from "@nextui-org/chip";
 import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
-import Breadcrumbs from "@/components/breadcrumbs";
 
 export async function generateMetadata({
   params,
@@ -78,12 +77,10 @@ export default async function AnimeDetailPage({
         <div className="col-span-3 w-full">
           <div className="relative w-full h-[250px] md:h-[350px] ">
             <Image
-              as={NextImage}
               src={poster}
               alt={jp_title}
               className="rounded-md object-cover object-center"
               removeWrapper
-              fill
             />
           </div>
         </div>
@@ -127,24 +124,20 @@ export default async function AnimeDetailPage({
               <div className="grid grid-cols-2 h-1/2 relative">
                 <div className="w-full h-full relative">
                   <Image
-                    as={NextImage}
                     src={character.char_img}
                     alt={character.char_name}
                     className="w-full h-full object-cover object-center"
                     removeWrapper
                     radius="none"
-                    fill
                   />
                 </div>
                 <div className="w-full h-full relative">
                   <Image
-                    as={NextImage}
                     src={character.voice_char_img}
                     alt={character.voice_char_name}
                     className="w-full h-full object-cover object-center"
                     removeWrapper
                     radius="none"
-                    fill
                   />
                 </div>
               </div>
@@ -167,13 +160,11 @@ export default async function AnimeDetailPage({
             >
               <div className="relative w-full h-[70%] ">
                 <Image
-                  as={NextImage}
                   src={staff.char_img}
                   alt={staff.char_name}
                   className="object-cover object-center"
                   removeWrapper
                   radius="none"
-                  fill
                 />
               </div>
 
